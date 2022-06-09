@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
         time += Time.deltaTime;
         if (time >= freq)
         {
-            var newEnemy = Instantiate(enemyPrefab, startTransform.position, Quaternion.identity);
+            var newEnemy = Instantiate(enemyPrefab, startTransform.position, Quaternion.identity, transform);
             var behavior = newEnemy.AddComponent<EnemyBehaviour>();
             behavior.path = path;
             time = 0;

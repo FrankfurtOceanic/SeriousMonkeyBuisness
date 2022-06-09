@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.T))
         {
             index++;
-            if (index > spawnPositions.Length)
+            if (index >= spawnPositions.Length)
                 index = 0;
             transform.position = spawnPositions[index].position;
         }

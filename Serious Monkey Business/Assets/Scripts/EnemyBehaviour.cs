@@ -7,6 +7,8 @@ public class EnemyBehaviour : MonoBehaviour
     public Transform[] path;
     public float speed = 3;
 
+    public float HP = 100;
+
     int index = 0;
     Vector3 startPosition;
     float startTime;
