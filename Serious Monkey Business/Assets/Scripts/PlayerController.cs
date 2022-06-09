@@ -18,16 +18,27 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
+
+
+        
+        if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger)&&OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
         {
             transform.position = godPosition.position;
         }
-        else if (Input.GetKeyDown(KeyCode.T))
+        else if (OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
         {
             index++;
             if (index >= spawnPositions.Length)
                 index = 0;
             transform.position = spawnPositions[index].position;
         }
+        else if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger))
+        {
+            index--;
+            if (index < 0)
+                index = spawnPositions.Length-1;
+            transform.position = spawnPositions[index].position;
+        }
+
     }
 }
