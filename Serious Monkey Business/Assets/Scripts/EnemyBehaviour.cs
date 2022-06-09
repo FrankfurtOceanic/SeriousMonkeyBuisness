@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     public Transform[] path;
-    public float speed = 0.1f;
+    public float speed = 3;
 
     int index = 0;
     Vector3 startPosition;
@@ -24,6 +24,7 @@ public class EnemyBehaviour : MonoBehaviour
         if((transform.position - path[index].position).magnitude < 0.1f)
         {
             startPosition = path[index].position;
+            startTime = Time.time;
             index++;
         }
         if(index < path.Length)
@@ -36,6 +37,10 @@ public class EnemyBehaviour : MonoBehaviour
 
             // Set our position as a fraction of the distance between the markers.
             transform.position = Vector3.Lerp(startPosition, path[index].position, fractionOfJourney);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 }
