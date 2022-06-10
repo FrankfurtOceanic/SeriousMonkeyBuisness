@@ -25,14 +25,14 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = godPosition.position;
         }
-        else if (OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
+        else if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
         {
             index++;
             if (index >= spawnPositions.Length)
                 index = 0;
             transform.position = spawnPositions[index].position;
         }
-        else if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
+        else if (OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
         {
             index--;
             if (index < 0)
