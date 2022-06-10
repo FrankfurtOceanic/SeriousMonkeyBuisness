@@ -20,6 +20,11 @@ public class EnemyBehaviour : MonoBehaviour
         startTime = Time.time;
     }
 
+    public void TakeDamage(float dmg)
+    {
+        HP -= dmg;
+    }
+
     // Update is called once per frame
     void Update()
     {

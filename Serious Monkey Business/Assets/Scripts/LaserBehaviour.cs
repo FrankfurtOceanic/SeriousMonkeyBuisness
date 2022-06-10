@@ -52,7 +52,7 @@ public class LaserBehaviour : MonoBehaviour
 
     void DamageEnemy()
     {
-        m_EnemyBehaviour.HP -= DPS * Time.deltaTime;
+        m_EnemyBehaviour.TakeDamage(DPS * Time.deltaTime);
         if(m_EnemyBehaviour.HP < 0)
         {
             Destroy(m_EnemyBehaviour.gameObject);

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.5993736, g: 0.5997497, b: 0.59948695, a: 1}
+  m_IndirectSpecularColor: {r: 0.59937525, g: 0.5997512, b: 0.59948856, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6613,7 +6613,7 @@ PrefabInstance:
     - target: {fileID: 1135632455395526490, guid: 22d074fe9d75c4fd4b85ff946465f7a1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 3.648
       objectReference: {fileID: 0}
     - target: {fileID: 1135632455395526490, guid: 22d074fe9d75c4fd4b85ff946465f7a1,
         type: 3}
@@ -6654,6 +6654,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: OVRPlayerController
+      objectReference: {fileID: 0}
+    - target: {fileID: 1135632455406628502, guid: 22d074fe9d75c4fd4b85ff946465f7a1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7799023493405734196, guid: 22d074fe9d75c4fd4b85ff946465f7a1,
         type: 3}
