@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 1135632455406628502}
   - component: {fileID: 1135632455406566100}
   - component: {fileID: 1135632455406469002}
+  - component: {fileID: 7799023493405734196}
   m_Layer: 0
   m_Name: OVRPlayerController
   m_TagString: Untagged
@@ -452,6 +453,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71d1996d67004241a3b69960856ffcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7799023493405734196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135632455395892084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27144a1ef6fd7d54a85d656c8e77baac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  godPosition: {fileID: 0}
+  spawnPositions: []
 --- !u!1 &1135632455395892086
 GameObject:
   m_ObjectHideFlags: 0
