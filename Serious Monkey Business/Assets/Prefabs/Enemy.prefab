@@ -111,5 +111,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8638aa40e935cd448b6e8f85958f960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashCooldown: 0.1
-  flashDecreaseRate: 10
+  flashCooldown: 1.15
+  flashDecreaseRate: 5.36
