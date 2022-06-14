@@ -12,22 +12,27 @@ public class EnemyBehaviour : MonoBehaviour
     int index = 0;
     Vector3 startPosition;
     float startTime;
+    Flash flash;
 
     // Start is called before the first frame update
     void Start()
     {
         startPosition = transform.position;
         startTime = Time.time;
+        flash = GetComponent<Flash>();
     }
+    
 
     public void TakeDamage(float dmg)
     {
         HP -= dmg;
+        flash.FlashMe();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if((transform.position - path[index].position).magnitude < 0.1f)
         {
             startPosition = path[index].position;
