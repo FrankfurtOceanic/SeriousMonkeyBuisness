@@ -8,12 +8,15 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float freq;
     [SerializeField] Transform startTransform;
     [SerializeField] Transform[] path;
+    private LineRenderer lr;
 
     float time;
 
     // Start is called before the first frame update
     void Start()
     {
+        lr = GetComponent<LineRenderer>();
+        SetUpLine();
         
     }
 
@@ -27,6 +30,15 @@ public class EnemySpawner : MonoBehaviour
             var behavior = newEnemy.AddComponent<EnemyBehaviour>();
             behavior.path = path;
             time = 0;
+        }
+    }
+    public void SetUpLine()
+    {
+        lr.positionCount = 1 + path.Length;
+        lr.SetPosition(0, startTransform.position);
+        for (int i = 0; i<path.Length; i++)
+        {
+            lr.SetPosition(i + 1, path[i].position);
         }
     }
 }

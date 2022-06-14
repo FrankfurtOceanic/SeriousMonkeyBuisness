@@ -6,6 +6,8 @@ public class LaserBehaviour : MonoBehaviour
 {
     [SerializeField] float DPS;
     [SerializeField] LineRenderer lineRenderer;
+    [SerializeField] Transform gun;
+    [SerializeField] float range;
 
     EnemySpawner m_Spawner;
     EnemyBehaviour m_EnemyBehaviour;
@@ -18,15 +20,17 @@ public class LaserBehaviour : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(m_EnemyBehaviour == null)
         {
+            lineRenderer.SetPositions(new Vector3[2]);
             TargetEnemy();
         }
         else
         {
-            lineRenderer.SetPositions(new Vector3[] { transform.position, m_EnemyTransform.position });
+            transform.LookAt(m_EnemyTransform);
+            lineRenderer.SetPositions(new Vector3[] { Vector3.zero, transform.InverseTransformPoint(m_EnemyTransform.position) });
             DamageEnemy();
         }
     }
@@ -35,7 +39,7 @@ public class LaserBehaviour : MonoBehaviour
     {
         m_EnemyBehaviour = null;
         m_EnemyTransform = null;
-        float minDistance = int.MaxValue;
+        float minDistance = range;
 
         foreach(Transform spawn in m_Spawner.transform)
         {
