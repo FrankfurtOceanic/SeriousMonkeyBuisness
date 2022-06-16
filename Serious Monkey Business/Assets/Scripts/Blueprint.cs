@@ -27,13 +27,21 @@ public class Blueprint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 50000f, targetLayer))
+        if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) > 0.1)
         {
-            building.transform.position = hit.point;
-            if (OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
+            building.SetActive(true);
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 50000f, targetLayer))
             {
-                Instantiate(turret, hit.point, Quaternion.identity);
+                building.transform.position = hit.point;
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
+                {
+                    Instantiate(turret, hit.point, Quaternion.identity);
+                }
             }
+        }
+        else
+        {
+            building.SetActive(false);
         }
         
     }
