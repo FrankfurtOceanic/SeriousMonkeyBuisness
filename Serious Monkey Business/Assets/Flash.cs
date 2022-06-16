@@ -17,7 +17,6 @@ public class Flash : MonoBehaviour
         if (currentFlashCooldown > 0)
             return;
 
-        Debug.Log(flash);
         currentFlashCooldown = flashCooldown;
         flash = 1;
     }
