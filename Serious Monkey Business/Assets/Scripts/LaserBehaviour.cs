@@ -27,6 +27,10 @@ public class LaserBehaviour : MonoBehaviour
             lineRenderer.SetPositions(new Vector3[2]);
             TargetEnemy();
         }
+        else if ((transform.position - m_EnemyTransform.position).magnitude > range)
+        {
+            TargetEnemy();
+        }
         else
         {
             transform.LookAt(m_EnemyTransform);
