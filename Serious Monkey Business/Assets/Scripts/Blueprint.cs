@@ -7,7 +7,7 @@ public class Blueprint : MonoBehaviour
     RaycastHit hit;
     public GameObject prefab;
     public GameObject turret;
-    private GameObject building;
+    private GameObject blueprintPrefab;
     [SerializeField] LayerMask targetLayer;
     [Range(0f, 1f)]
     public float TriggerThreshold = 0.1f;
@@ -17,7 +17,7 @@ public class Blueprint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        building = Instantiate(prefab);
+        blueprintPrefab = Instantiate(prefab);
 
         
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 50000f, targetLayer))
@@ -57,16 +57,26 @@ public class Blueprint : MonoBehaviour
 
         if (OVRInput.GetDown(OVRInput.RawButton.Y))
         {
-            if (Building) Building = false;
-            else Building = true;
+            if (Building)
+            {
+                Building = false; 
+                blueprintPrefab.SetActive(false);
+            }
+            else 
+            {
+                Building = true;
+                 blueprintPrefab.SetActive(true);
+            }
+           // Building = !Building;
+
 
         }
         if (Building)
         {
-            building.SetActive(true);
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 50000f, targetLayer))
+           
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, float.MaxValue, targetLayer))
             {
-                building.transform.position = hit.point;
+                blueprintPrefab.transform.position = hit.point;
 
                 if (OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger))
                 {
@@ -74,10 +84,7 @@ public class Blueprint : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            building.SetActive(false);
-        }
+        
 
     }
 }

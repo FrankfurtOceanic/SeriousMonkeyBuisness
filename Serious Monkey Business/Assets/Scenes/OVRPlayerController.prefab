@@ -641,6 +641,38 @@ MonoBehaviour:
   _headPoseRelativeOffsetRotation: {x: 0, y: 0, z: 0}
   _headPoseRelativeOffsetTranslation: {x: 0, y: 0, z: 0}
   profilerTcpPort: 32419
+  expandMixedRealityCapturePropertySheet: 0
+  enableMixedReality: 0
+  compositionMethod: 0
+  extraHiddenLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  extraVisibleLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  dynamicCullingMask: 1
+  externalCompositionBackdropColorRift: {r: 0, g: 1, b: 0, a: 1}
+  externalCompositionBackdropColorQuest: {r: 0, g: 0, b: 0, a: 0}
+  capturingCameraDevice: 0
+  flipCameraFrameHorizontally: 0
+  flipCameraFrameVertically: 0
+  handPoseStateLatency: 0
+  sandwichCompositionRenderLatency: 0
+  sandwichCompositionBufferedFrames: 8
+  chromaKeyColor: {r: 0, g: 1, b: 0, a: 1}
+  chromaKeySimilarity: 0.6
+  chromaKeySmoothRange: 0.03
+  chromaKeySpillRange: 0.06
+  useDynamicLighting: 0
+  depthQuality: 1
+  dynamicLightingSmoothFactor: 8
+  dynamicLightingDepthVariationClampingValue: 0.001
+  virtualGreenScreenType: 0
+  virtualGreenScreenTopY: 10
+  virtualGreenScreenBottomY: -10
+  virtualGreenScreenApplyDepthCulling: 0
+  virtualGreenScreenDepthTolerance: 0.2
+  mrcActivationMode: 0
   isInsightPassthroughEnabled: 0
   _trackingOriginType: 0
   usePositionTracking: 1
@@ -778,6 +810,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 2059420205233168890, guid: ba12656eb71ba469094f435a203484f2, type: 3}
   turret: {fileID: 9210639241854698420, guid: 92980ac0ba9ed4efcb88a327ffab8c60, type: 3}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  TriggerThreshold: 0.1
+  getDownThreshhold: 0.7
 --- !u!1001 &3940089296869150521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -840,6 +877,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1138690916814391446}
     m_Modifications:
+    - target: {fileID: 7888784793814416501, guid: 4b4854c084dab4809b132ad58befad78,
+        type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7888784793814416501, guid: 4b4854c084dab4809b132ad58befad78,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7888784793814416501, guid: 4b4854c084dab4809b132ad58befad78,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7888784793814416501, guid: 4b4854c084dab4809b132ad58befad78,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7888784793814416501, guid: 4b4854c084dab4809b132ad58befad78,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7888784793814416501, guid: 4b4854c084dab4809b132ad58befad78,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].outWeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7888784793814416502, guid: 4b4854c084dab4809b132ad58befad78,
         type: 3}
       propertyPath: m_Name
