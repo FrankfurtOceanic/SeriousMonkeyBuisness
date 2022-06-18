@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5b39e32a8a9864fb3178a89c80ecdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ps: {fileID: 0}
   autoDestructCheckInterval: 0.5
   autoStop: 0
 --- !u!199 &1572278924935621162
@@ -70,7 +69,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 669025377795b574da66d9bb2472fcab, type: 2}
+  - {fileID: 2100000, guid: 4138cabf282de9c4da089f28afab8c67, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -204,7 +203,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 3
       minScalar: 0.0001
       maxCurve:
         serializedVersion: 2
@@ -373,8 +372,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 10
-      minScalar: 6
+      scalar: 6
+      minScalar: 4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1171,8 +1170,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.18510962
         - serializedVersion: 3
-          time: 0.07681109
-          value: 0.3492409
+          time: 0.0910895
+          value: 0.36462557
           inSlope: 0.78916395
           outSlope: 0.78916395
           tangentMode: 0
@@ -1180,8 +1179,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.99642944
-          value: 0.7779559
+          time: 1
+          value: 0.5471858
           inSlope: 0.05853686
           outSlope: 0.05853686
           tangentMode: 0
@@ -1498,7 +1497,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
-        key0: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
+        key0: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
         key1: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -1516,7 +1515,7 @@ ParticleSystem:
         ctime7: 0
         atime0: 39899
         atime1: 65535
-        atime2: 0
+        atime2: 65535
         atime3: 0
         atime4: 0
         atime5: 0
