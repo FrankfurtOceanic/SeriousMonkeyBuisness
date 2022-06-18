@@ -4,13 +4,14 @@
  [RequireComponent( typeof( ParticleSystem )) ]
  public class ParticleStopper : MonoBehaviour {
 
-    public ParticleSystem ps;
+     ParticleSystem ps;
  
      public float autoDestructCheckInterval = 0.5f;
 
     public bool autoStop=false;
     private void Start()
     {
+        ps = GetComponent<ParticleSystem>();
         if(autoStop)
             StartCoroutine( TickDelay() );
 
