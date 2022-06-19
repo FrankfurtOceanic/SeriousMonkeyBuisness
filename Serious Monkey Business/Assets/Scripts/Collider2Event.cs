@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//Converts onTRiggerEnter to a event
+/// <summary>
+/// Converts onTRiggerEnter to a event
+/// </summary>
 public class Collider2Event : MonoBehaviour
 {
     public event Action<Collider> EventTriggerEnter;

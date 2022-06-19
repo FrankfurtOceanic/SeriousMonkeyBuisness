@@ -42,7 +42,8 @@ public class Rocket : MonoBehaviour
 
     private void Collider_EventTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
+        //TODO freeze rocket and object, add shake, delay explosion
+
         var enemy=other.GetComponent<EnemyBehaviour>();
         if (enemy != null)
         {
