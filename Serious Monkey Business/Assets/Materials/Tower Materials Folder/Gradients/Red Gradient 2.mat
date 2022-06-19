@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Gradient 1
+  m_Name: Red Gradient 2
   m_Shader: {fileID: -6465566751694194690, guid: a898dfac722b2427e8bde6bf949e028f,
     type: 3}
   m_ValidKeywords: []
@@ -87,7 +87,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Smoothness: 0.163
+    - _Smoothness: 0.138
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -103,10 +103,10 @@ Material:
     - _bottom: -0.5
     - _top: 1
     m_Colors:
-    - _Bottom_Color: {r: 0, g: 0.038279597, b: 0.6981132, a: 0}
+    - _Bottom_Color: {r: 0.6509804, g: 0, b: 0.34172654, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Top_Color: {r: 0, g: 0.78039217, b: 1, a: 0}
+    - _Top_Color: {r: 1, g: 0.009137094, b: 0, a: 1}
     - _bottom_color: {r: 0.043307845, g: 0, b: 0.6981132, a: 0}
     - _top_color: {r: 0, g: 0.9804158, b: 1, a: 0}
   m_BuildTextureStacks: []

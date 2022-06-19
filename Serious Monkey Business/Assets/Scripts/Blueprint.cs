@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public class Blueprint : MonoBehaviour
 {
     RaycastHit hit;
@@ -14,6 +15,16 @@ public class Blueprint : MonoBehaviour
     [Range(0f, 1f)]
     public float getDownThreshhold = 0.7f;
     bool Building = false;
+
+    LineRenderer line;
+
+
+    private void Awake()
+    {
+        line = GetComponent<LineRenderer>();
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +33,7 @@ public class Blueprint : MonoBehaviour
         
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 50000f, targetLayer))
         {
-            transform.position = hit.point;
+            blueprintPrefab.transform.position = hit.point;
         }
 
         
@@ -67,21 +78,24 @@ public class Blueprint : MonoBehaviour
                 Building = true;
                  blueprintPrefab.SetActive(true);
             }
-           // Building = !Building;
 
 
         }
+        
         if (Building)
         {
+            line.SetPositions(new Vector3[]{transform.position, transform.position});
            
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, float.MaxValue, targetLayer))
             {
                 blueprintPrefab.transform.position = hit.point;
+                line.SetPosition(1, hit.point);
 
                 if (OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger))
                 {
                     Instantiate(turret, hit.point, Quaternion.identity);
                 }
+                
             }
         }
         
