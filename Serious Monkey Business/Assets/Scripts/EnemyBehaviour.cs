@@ -9,6 +9,8 @@ public class EnemyBehaviour : MonoBehaviour
 
     public float HP = 100;
 
+    public float damage = 100;
+
     int index = 0;
     Vector3 startPosition;
     float startTime;
@@ -35,6 +37,9 @@ public class EnemyBehaviour : MonoBehaviour
 
         if((transform.position - path[index].position).magnitude < 0.1f)
         {
+            var targettedTower = path[index].GetComponentInChildren<PlayerBase>();
+            targettedTower?.TakeDmg(damage);
+
             startPosition = path[index].position;
             startTime = Time.time;
             index++;

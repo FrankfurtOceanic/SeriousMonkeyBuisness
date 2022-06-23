@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Flash : MonoBehaviour
 {
-    Renderer renderer;
+    Renderer myRenderer;
     Color originalColor;
 
 
@@ -24,8 +24,8 @@ public class Flash : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        renderer = GetComponent<Renderer>();
-        originalColor = renderer.material.color;
+        myRenderer = GetComponent<Renderer>();
+        originalColor = myRenderer.material.color;
     }
 
     // Update is called once per frame
@@ -36,7 +36,7 @@ public class Flash : MonoBehaviour
         color.r = Mathf.Max(color.r, flash);
         color.g = Mathf.Max(color.g, flash);
         color.b = Mathf.Max(color.b, flash);
-        renderer.material.color = color;
+        myRenderer.material.color = color;
         flash = Mathf.Max(0, flash - flashDecreaseRate * Time.deltaTime);
     }
 }

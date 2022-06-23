@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,17 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Transform godPosition;
     [SerializeField] Transform[] spawnPositions;
+
+    public float health;
+    private float money;
+
+    public event Action<float> HealthChanged;
+
+    public void TakeDmg(float dmg)
+    {
+        health -= dmg;
+        HealthChanged?.Invoke(health);
+    }
 
     int index = 0;
 
