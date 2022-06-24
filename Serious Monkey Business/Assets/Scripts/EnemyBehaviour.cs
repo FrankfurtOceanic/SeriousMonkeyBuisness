@@ -28,7 +28,7 @@ public class EnemyBehaviour : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         HP -= dmg;
-        flash.FlashMe();
+        //flash.FlashMe();
     }
 
     // Update is called once per frame

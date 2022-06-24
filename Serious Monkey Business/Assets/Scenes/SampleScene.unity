@@ -6738,7 +6738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af5d4b6b75c3284bb4b2cfa420416bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7301409456457223283, guid: b613aa8a29a3977428ef382ad24693af,
+  enemyPrefab: {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205,
     type: 3}
   freq: 3
   startTransform: {fileID: 727149895}
