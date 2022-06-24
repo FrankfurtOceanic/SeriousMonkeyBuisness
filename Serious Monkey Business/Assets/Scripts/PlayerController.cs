@@ -12,16 +12,32 @@ public class PlayerController : MonoBehaviour
     public Transform leftHand;
     public Transform rightHand;
 
-    public float health;
-    public float money;
+    public float initialHealth;
+    public float initialMoney;
+
+    float health;
+    float money;
+
+    public float Health
+    {
+        get => health; set
+        {
+            health = value;
+            HealthChanged?.Invoke(value);
+        }
+    }
+
+    public float Money
+    {
+        get => money; set
+        {
+            money = value;
+            MoneyChanged?.Invoke(value);
+        }
+    }
 
     public event Action<float> HealthChanged;
-
-    public void TakeDmg(float dmg)
-    {
-        health -= dmg;
-        HealthChanged?.Invoke(health);
-    }
+    public event Action<float> MoneyChanged;
 
     public void Equip(Gun g)
     {
@@ -32,7 +48,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Health = initialHealth;
+        Money = initialMoney;
     }
 
     int index = 0;

@@ -15,9 +15,9 @@ public class EnemyExit : MonoBehaviour
         flash = GetComponentInChildren<Flash>();
     }
 
-    public void TakeDmg(float health)
+    public void TakeDmg(float dmg)
     {
-        owner.TakeDmg(health);
+        owner.Health -= dmg;
         flash.FlashMe();
     }
 }
