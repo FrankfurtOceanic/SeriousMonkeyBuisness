@@ -463,6 +463,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5663998324133542822, guid: 3a00ece927d25d6468bce6f5760c98ab,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 135021416956003376, guid: 3a00ece927d25d6468bce6f5760c98ab,
         type: 3}
       propertyPath: m_RootOrder
@@ -525,12 +530,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a00ece927d25d6468bce6f5760c98ab, type: 3}
---- !u!4 &178130520 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 135021416955955514, guid: 3a00ece927d25d6468bce6f5760c98ab,
-    type: 3}
-  m_PrefabInstance: {fileID: 178130519}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &178130521 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7072499123704116830, guid: 3a00ece927d25d6468bce6f5760c98ab,
@@ -543,12 +542,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27144a1ef6fd7d54a85d656c8e77baac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &178130522 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 135021416955959636, guid: 3a00ece927d25d6468bce6f5760c98ab,
-    type: 3}
-  m_PrefabInstance: {fileID: 178130519}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &245866693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,6 +1332,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9210639241854698420, guid: 92980ac0ba9ed4efcb88a327ffab8c60,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9210639241854698427, guid: 92980ac0ba9ed4efcb88a327ffab8c60,
         type: 3}
       propertyPath: m_RootOrder
@@ -1778,12 +1776,12 @@ PrefabInstance:
         type: 3}
       propertyPath: leftHandTransform
       value: 
-      objectReference: {fileID: 178130522}
+      objectReference: {fileID: 0}
     - target: {fileID: 6808307310509569722, guid: 1d3c0cbb75087f042b092467c221ae48,
         type: 3}
       propertyPath: rightHandTransform
       value: 
-      objectReference: {fileID: 178130520}
+      objectReference: {fileID: 0}
     - target: {fileID: 7387877231376158565, guid: 1d3c0cbb75087f042b092467c221ae48,
         type: 3}
       propertyPath: m_RootOrder
