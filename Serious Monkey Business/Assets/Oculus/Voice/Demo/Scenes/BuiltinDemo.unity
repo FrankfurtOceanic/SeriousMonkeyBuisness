@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.16788375, g: 0.21073635, b: 0.28994125, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 72142381ac12178428d7804c88f7c131, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 72142381ac12178428d7804c88f7c131,
+    type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -185,6 +186,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  allowConfidenceOverlap: 0
+  confidenceRanges: []
 --- !u!1 &146918373
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +333,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  allowConfidenceOverlap: 0
+  confidenceRanges: []
 --- !u!1 &456101853
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +390,7 @@ MonoBehaviour:
     comparisonMethod: 0
     matchValue: 
     floatingPointComparisonTolerance: 0.00009999999747378752
+    confidenceRanges: []
   - path: entities.wit$duration:duration[0].unit
     witValueReference: {fileID: 0}
     contentRequired: 1
@@ -392,6 +398,7 @@ MonoBehaviour:
     comparisonMethod: 0
     matchValue: 
     floatingPointComparisonTolerance: 0.00009999999747378752
+    confidenceRanges: []
   formattedValueEvents: []
   onMultiValueEvent:
     m_PersistentCalls:
@@ -693,6 +700,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  allowConfidenceOverlap: 0
+  confidenceRanges: []
 --- !u!1 &680232732
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,6 +757,7 @@ MonoBehaviour:
     comparisonMethod: 0
     matchValue: 
     floatingPointComparisonTolerance: 0.00009999999747378752
+    confidenceRanges: []
   - path: entities.wit$duration:duration[0].unit
     witValueReference: {fileID: 0}
     contentRequired: 0
@@ -755,6 +765,7 @@ MonoBehaviour:
     comparisonMethod: 0
     matchValue: 
     floatingPointComparisonTolerance: 0.00009999999747378752
+    confidenceRanges: []
   formattedValueEvents: []
   onMultiValueEvent:
     m_PersistentCalls:
@@ -995,6 +1006,7 @@ MonoBehaviour:
     soundWakeThreshold: 0.0005
     sampleLengthInMs: 10
     micBufferLengthInSeconds: 1
+    maxConcurrentRequests: 5
     sendAudioToWit: 1
     customTranscriptionProvider: {fileID: 0}
     alwaysRecord: 0
@@ -1035,51 +1047,63 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1934948696}
     m_Modifications:
-    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526, type: 3}
+    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526,
+        type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526, type: 3}
+    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.19318089
       objectReference: {fileID: 0}
-    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526, type: 3}
+    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526,
+        type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.23133183
       objectReference: {fileID: 0}
-    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526, type: 3}
+    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526,
+        type: 3}
       propertyPath: m_LocalPosition.z
       value: 10.433537
       objectReference: {fileID: 0}
-    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526, type: 3}
+    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526,
+        type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526, type: 3}
+    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526, type: 3}
+    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526,
+        type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526, type: 3}
+    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526,
+        type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526, type: 3}
+    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526, type: 3}
+    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526, type: 3}
+    - target: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8853415545987821519, guid: 0381539164984dc4ca193f001869c526, type: 3}
+    - target: {fileID: 8853415545987821519, guid: 0381539164984dc4ca193f001869c526,
+        type: 3}
       propertyPath: m_Name
       value: Environment
       objectReference: {fileID: 0}
@@ -1087,7 +1111,8 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 0381539164984dc4ca193f001869c526, type: 3}
 --- !u!4 &842905515 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8853415545987821512, guid: 0381539164984dc4ca193f001869c526,
+    type: 3}
   m_PrefabInstance: {fileID: 842905514}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &885437325
@@ -1329,6 +1354,7 @@ MonoBehaviour:
     comparisonMethod: 0
     matchValue: 
     floatingPointComparisonTolerance: 0.00009999999747378752
+    confidenceRanges: []
   - path: entities.wit$duration:duration[0].unit
     witValueReference: {fileID: 0}
     contentRequired: 0
@@ -1336,6 +1362,7 @@ MonoBehaviour:
     comparisonMethod: 0
     matchValue: 
     floatingPointComparisonTolerance: 0.00009999999747378752
+    confidenceRanges: []
   formattedValueEvents: []
   onMultiValueEvent:
     m_PersistentCalls:
@@ -1707,6 +1734,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  allowConfidenceOverlap: 0
+  confidenceRanges: []
 --- !u!1 &1520245540
 GameObject:
   m_ObjectHideFlags: 0
