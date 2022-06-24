@@ -7,6 +7,8 @@ public class Flash : MonoBehaviour
     Renderer myRenderer;
     Color originalColor;
 
+    public Color flashColor=Color.white;
+
 
     public float flashCooldown=1f, flashDecreaseRate=1f;
     float flash = 0;
@@ -18,7 +20,7 @@ public class Flash : MonoBehaviour
             return;
 
         currentFlashCooldown = flashCooldown;
-        flash = 1;
+        flash = 1f;
     }
 
     // Start is called before the first frame update
@@ -33,9 +35,9 @@ public class Flash : MonoBehaviour
     {
         currentFlashCooldown -= Time.deltaTime;
         var color=originalColor;
-        color.r = Mathf.Max(color.r, flash);
-        color.g = Mathf.Max(color.g, flash);
-        color.b = Mathf.Max(color.b, flash);
+        color.r = Mathf.Max(color.r, flash*flashColor.r);
+        color.g = Mathf.Max(color.g, flash*flashColor.g);
+        color.b = Mathf.Max(color.b, flash*flashColor.b);
         myRenderer.material.color = color;
         flash = Mathf.Max(0, flash - flashDecreaseRate * Time.deltaTime);
     }

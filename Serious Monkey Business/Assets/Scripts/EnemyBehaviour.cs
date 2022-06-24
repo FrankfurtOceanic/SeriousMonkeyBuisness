@@ -8,6 +8,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float speed = 3;
 
     public float HP = 100;
+    public float MaxHP=100;
 
     public float damage = 100;
 
@@ -16,19 +17,22 @@ public class EnemyBehaviour : MonoBehaviour
     float startTime;
     Flash flash;
 
+    public Color liveColor = new Color(0.8f,0.8f,0.8f), deadColor=new Color(1f, 1f, 1f);
+
     // Start is called before the first frame update
     void Start()
     {
         startPosition = transform.position;
         startTime = Time.time;
-        flash = GetComponent<Flash>();
+        flash = GetComponentInChildren<Flash>();
     }
     
 
     public void TakeDamage(float dmg)
     {
         HP -= dmg;
-        //flash.FlashMe();
+        flash.flashColor = Color.Lerp(liveColor, deadColor, 1-Mathf.Pow(HP/MaxHP, 0.9f));
+        flash.FlashMe();
     }
 
     // Update is called once per frame
