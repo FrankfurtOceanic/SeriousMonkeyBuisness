@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MinigunBehaviour : MonoBehaviour
+public class MinigunBehaviour : MonoBehaviour, Gun
 {
-    [SerializeField] Transform leftHandTransform;
-    [SerializeField] Transform rightHandTransform;
+    Transform leftHandTransform;
+    Transform rightHandTransform;
     [SerializeField] ParticleSystem muzzleFlash;
 
-    // Update is called once per frame
+    // temp hack so that player has minigun equiped at start
+    private void Start()
+    {
+        var player=FindObjectOfType<PlayerController>();
+        player.Equip(this);
+    }
+
     void Update()
     {
         transform.position = ((leftHandTransform.position + rightHandTransform.position) / 2) - 0.02f*Vector3.one;
@@ -20,11 +26,16 @@ public class MinigunBehaviour : MonoBehaviour
             Fire();
             OVRInput.SetControllerVibration(0.05f, 0.1f, OVRInput.Controller.LTouch);
         }
-
     }
 
-    void Fire()
+    public void Fire()
     {
         muzzleFlash.Play();
+    }
+
+    public void EquipTo(PlayerController player)
+    {
+        leftHandTransform = player.leftHand;
+        rightHandTransform = player.rightHand;
     }
 }

@@ -37,7 +37,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         if((transform.position - path[index].position).magnitude < 0.1f)
         {
-            var targettedTower = path[index].GetComponentInChildren<PlayerBase>();
+            var targettedTower = path[index].GetComponentInChildren<EnemyExit>();
             targettedTower?.TakeDmg(damage);
 
             startPosition = path[index].position;

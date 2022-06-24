@@ -3,13 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] Transform godPosition;
     [SerializeField] Transform[] spawnPositions;
 
+    public Transform leftHand;
+    public Transform rightHand;
+
     public float health;
-    private float money;
+    public float money;
 
     public event Action<float> HealthChanged;
 
@@ -19,13 +23,19 @@ public class PlayerController : MonoBehaviour
         HealthChanged?.Invoke(health);
     }
 
-    int index = 0;
+    public void Equip(Gun g)
+    {
+        g.EquipTo(this);
+    }
+
 
     // Start is called before the first frame update
     void Start()
     {
         
     }
+
+    int index = 0;
 
     // Update is called once per frame
     void Update()

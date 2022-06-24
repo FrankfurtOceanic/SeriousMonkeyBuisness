@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// The exit where the enemies go
 /// </summary>
-public class PlayerBase : MonoBehaviour
+public class EnemyExit : MonoBehaviour
 {
     public PlayerController owner;
     private Flash flash;
