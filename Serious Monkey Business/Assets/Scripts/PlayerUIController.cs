@@ -11,7 +11,7 @@ public class PlayerUIController : MonoBehaviour
 
     public Text money;
 
-    void Start()
+    void Awake()
     {
         player.HealthChanged += Player_healthChanged;
         player.MoneyChanged += Player_MoneyChanged;

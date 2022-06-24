@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7072499123704116830}
   healthBar: {fileID: 1396613572}
+  money: {fileID: 4485021849484617483}
 --- !u!1 &133514848490879048
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,7 +819,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135021416956041246}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27144a1ef6fd7d54a85d656c8e77baac, type: 3}
   m_Name: 
