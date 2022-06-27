@@ -20,7 +20,7 @@ public class Rocket : MonoBehaviour
 
     private void Start()
     {
-       foreach(var collider in GetComponentsInChildren<Collider2Event>())
+        foreach (var collider in GetComponentsInChildren<Collider2Event>())
         {
             collider.EventTriggerEnter += Collider_EventTriggerEnter;
         }
@@ -28,8 +28,8 @@ public class Rocket : MonoBehaviour
 
     private void OnDestroy()
     {
-        
-       foreach(var collider in GetComponentsInChildren<Collider2Event>())
+
+        foreach (var collider in GetComponentsInChildren<Collider2Event>())
         {
             collider.EventTriggerEnter -= Collider_EventTriggerEnter;
         }
@@ -54,15 +54,18 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target == null)
-            return;
 
-        //TODO retarget if enemy dies
-
+        // gets faster at rotating as it goes
         rotationSpeed += (Random.value - 0.5f + rotationSpeedBias) * 2 * Time.deltaTime * rotationSpeedChangeRate;
         rotationSpeed = Mathf.Clamp(rotationSpeed, rotationSpeedMin, rotationSpeedMax);
-        Vector3 enemyDir = target.transform.position - transform.position;
-        transform.forward = Vector3.Slerp(transform.forward,enemyDir ,Time.deltaTime * rotationSpeed);
+
+        // rotate towards enemy
+        if (target != null)
+        {
+            Vector3 enemyDir = target.transform.position - transform.position;
+            transform.forward = Vector3.Slerp(transform.forward, enemyDir, Time.deltaTime * rotationSpeed);
+        }
+
         speed = Mathf.Min(maxSpeed, speed + accel * Time.deltaTime);
         var delta = transform.forward * Time.deltaTime * speed;
         speed += -gravityEffect * delta.y;
