@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 4928122129464072284}
   - component: {fileID: 4128054226766127321}
   - component: {fileID: 8385205988896925764}
+  - component: {fileID: 8684711291801502769}
   m_Layer: 0
   m_Name: LaserGun
   m_TagString: Untagged
@@ -314,6 +315,19 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
+--- !u!114 &8684711291801502769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7651512584869146280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e47f5d23cdcd1f34dae3b52680663be1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 20
 --- !u!1 &8654138646979201217
 GameObject:
   m_ObjectHideFlags: 0

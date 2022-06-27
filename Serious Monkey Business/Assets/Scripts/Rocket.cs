@@ -18,11 +18,6 @@ public class Rocket : MonoBehaviour
 
     public float DamageAmt;
 
-    public void RefindTarget()
-    {
-
-    }
-
     private void Start()
     {
        foreach(var collider in GetComponentsInChildren<Collider2Event>())
@@ -61,6 +56,8 @@ public class Rocket : MonoBehaviour
     {
         if (target == null)
             return;
+
+        //TODO retarget if enemy dies
 
         rotationSpeed += (Random.value - 0.5f + rotationSpeedBias) * 2 * Time.deltaTime * rotationSpeedChangeRate;
         rotationSpeed = Mathf.Clamp(rotationSpeed, rotationSpeedMin, rotationSpeedMax);
