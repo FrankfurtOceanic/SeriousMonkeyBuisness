@@ -50,7 +50,7 @@ public class SelectionCircle : MonoBehaviour
 
     }
 
-    public Transform SelectedItem => children[SelectionIndex];
+    public Transform SelectedItem => children[SelectionIndex].obj;
 
     int GetItemCount() => children.Count;
 
