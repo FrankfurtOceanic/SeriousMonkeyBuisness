@@ -25,7 +25,7 @@ public class SelectionCircle : MonoBehaviour
     {
         public Transform obj;
         public Bounds _localbounds;
-        public Bounds localbounds=>_localbounds;
+        public float width=>_localbounds.size.y*obj.transform.localScale.y;
         public float linePos;
     }
 
@@ -49,6 +49,8 @@ public class SelectionCircle : MonoBehaviour
         return children[index];
 
     }
+
+    public Transform SelectedItem => children[SelectedIndex];
 
     int GetItemCount() => children.Count;
 
@@ -82,7 +84,7 @@ public class SelectionCircle : MonoBehaviour
         centerObj.obj.gameObject.SetActive(true);
         centerObj.obj.localScale = lineScale(linePos);
 
-        linePos -= centerObj.localbounds.size.y / 2 ;
+        linePos -= centerObj.width / 2 ;
 
         int lidx = SelectionIndex;
         int cnt=0;
@@ -95,7 +97,7 @@ public class SelectionCircle : MonoBehaviour
                 break;
 
             Item item = GetItem((lidx+N)%N);
-            linePos -= item.localbounds.size.y;
+            linePos -= item.width;
             item.linePos = linePos;
 
             item.obj.localScale = lineScale(linePos);
@@ -103,7 +105,7 @@ public class SelectionCircle : MonoBehaviour
             item.obj.gameObject.SetActive(true);
         }
 
-        linePos = centerObj.linePos + centerObj.localbounds.size.y / 2;
+        linePos = centerObj.linePos + centerObj.width / 2;
         int ridx = SelectionIndex;
         cnt = 0;
         while (true)
@@ -111,11 +113,11 @@ public class SelectionCircle : MonoBehaviour
             ridx++;
             linePos += padding;
             cnt++;
-            if (cnt > rightMax)
+            if (cnt > rightMax || ridx+N>lidx)
                 break;
 
             Item item = GetItem((ridx+N)%N);
-            linePos += item.localbounds.size.y;
+            linePos += item.width;
             item.linePos = linePos;
             
             item.obj.localScale = lineScale(linePos);
