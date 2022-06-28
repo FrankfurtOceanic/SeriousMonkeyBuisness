@@ -66,9 +66,13 @@ public class Rocket : MonoBehaviour
             transform.forward = Vector3.Slerp(transform.forward, enemyDir, Time.deltaTime * rotationSpeed);
         }
 
+        //acceleration
         speed = Mathf.Min(maxSpeed, speed + accel * Time.deltaTime);
+
+        //gets faster as it goes down,
         var delta = transform.forward * Time.deltaTime * speed;
         speed += -gravityEffect * delta.y;
+
         transform.position += delta;
     }
 }
