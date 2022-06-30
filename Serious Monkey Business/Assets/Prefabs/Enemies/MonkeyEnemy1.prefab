@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1363766229957885619}
+  - component: {fileID: 2666962525470262527}
   m_Layer: 0
   m_Name: MonkeyEnemy1
   m_TagString: Untagged
@@ -32,6 +33,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2666962525470262527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363766229957885616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb0b48d315c4228448ea50b58bd30c0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: []
+  speed: 3
+  HP: 100
+  MaxHP: 100
+  damage: 100
 --- !u!1 &8022517778888728191
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,5 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8638aa40e935cd448b6e8f85958f960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
   flashCooldown: 0.6
   flashDecreaseRate: 0.6
