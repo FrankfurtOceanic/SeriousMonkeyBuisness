@@ -16,7 +16,7 @@ public class SelectionCircle : MonoBehaviour
 
     Vector3 lineScale(float distance)
     {
-        return Vector3.one* Mathf.Lerp(maxSize, minSize, Mathf.Abs(distance*distanceScale));
+        return Vector3.one * Mathf.Lerp(maxSize, minSize, Mathf.Abs(distance * distanceScale));
     }
 
     Vector3 line(float distance)
@@ -35,37 +35,52 @@ public class SelectionCircle : MonoBehaviour
     }
 
     List<Item> children=new();
-
+    bool itemsLayout=false;
     public void AddChild(Transform child)
     {
         Bounds childBounds=new Bounds(child.position,Vector3.zero);
-        foreach(Renderer r in child.GetComponentsInChildren<Renderer>())
+        foreach (Renderer r in child.GetComponentsInChildren<Renderer>())
         {
             childBounds.Encapsulate(r.bounds);
         }
+        child.localScale = child.localScale / childBounds.size.y;
 
         GameObject holder = new($"Holder for {child.name}");
         holder.transform.parent = transform;
         child.parent = holder.transform;
         child.localPosition = Vector3.zero;
-        // scale holder so that child size is 1
-      //  holder.transform.localScale = new Vector3(1/childBounds.size.x, 1,1)*childSize;
-        children.Add(new() { 
-            original=child,
-            obj=holder.transform,
+        holder.transform.localPosition = Vector3.zero;
+        itemsLayout = false;
+        children.Add(new()
+        {
+            original = child,
+            obj = holder.transform,
             width = childSize,
-            linePos=float.NaN,
+            linePos = float.NaN,
         });
+        
     }
 
-    void ScanChildren()
+   public void LayoutItems()
+    {
+        float linePos=0;
+        foreach (var child in children)
+        {
+            linePos += child.width;
+            child.linePos = linePos;
+            linePos += child.width / 2 + padding;
+        }
+        itemsLayout = true;
+    }
+
+    public void ScanChildren()
     {
         List<Transform> tmp=new();
-        foreach(Transform child in transform)
+        foreach (Transform child in transform)
         {
             tmp.Add(child);
         }
-        foreach(var child in tmp)
+        foreach (var child in tmp)
             AddChild(child);
     }
     //List<Item> items;
@@ -87,91 +102,39 @@ public class SelectionCircle : MonoBehaviour
 
     public void ScrollLeft()
     {
-        SelectionIndex = (SelectionIndex +1) % GetItemCount();
+        SelectionIndex = (SelectionIndex + 1) % GetItemCount();
     }
 
     public void ScrollRight()
     {
-        SelectionIndex = (SelectionIndex + GetItemCount()-1) % GetItemCount();
+        SelectionIndex = (SelectionIndex + GetItemCount() - 1) % GetItemCount();
     }
+
+    float curLinePos=0;
 
     // TODO this whole thing needs to be reworked
     void Update()
     {
-        //testing code
-        //if (Input.GetKeyDown(KeyCode.LeftArrow))
-          //  SelectionIndex--;
-
-
-        //testing code
-       // if (Input.GetKeyDown(KeyCode.RightArrow))
-         //   SelectionIndex++;
+        if (!itemsLayout)
+            LayoutItems();
 
         int N = GetItemCount();
+        curLinePos = Mathf.Lerp(curLinePos, children[SelectionIndex].linePos, Time.deltaTime * lerpSpeed);
 
-        SelectionIndex = (SelectionIndex + N) % N;
-
-        var centerObj = GetItem(SelectionIndex);
-        float linePos = float.IsNaN(centerObj.linePos)?0: Mathf.LerpUnclamped(centerObj.linePos, 0, Time.deltaTime * lerpSpeed);
-
-        centerObj.linePos = linePos;
-        centerObj.obj.localPosition = line(linePos);
-        centerObj.obj.gameObject.SetActive(true);
-        centerObj.obj.localScale = lineScale(linePos);
-
-        linePos -= centerObj.width / 2 ;
-
-        int lidx = SelectionIndex;
-        int cnt=0;
-        while (true)
+        for (int i = 0; i < N; i++)
         {
-            lidx--;
-            linePos -= padding;
-            cnt++;
-            if (cnt > leftMax)
-                break;
-
-            Item item = GetItem((lidx+N)%N);
-            linePos -= item.width;
-            if (float.IsNaN(item.linePos))
-                item.linePos = linePos;
+            Item item=GetItem(i);
+            if (i < SelectionIndex - leftMax || i > SelectionIndex + rightMax)
+            {
+                item.obj.gameObject.SetActive(false);
+            }
             else
-            item.linePos = Mathf.Lerp(item.linePos, linePos, 1);
-
-            item.obj.localScale = lineScale(item.linePos);
-            item.obj.position = line(item.linePos);
-            item.obj.gameObject.SetActive(true);
-        }
-
-        linePos = centerObj.linePos + centerObj.width / 2;
-        int ridx = SelectionIndex;
-        cnt = 0;
-        while (true)
-        {
-            ridx++;
-            linePos += padding;
-            cnt++;
-            if (cnt > rightMax || ridx> lidx+N)
-                break;
-
-            Item item = GetItem((ridx+N)%N);
-            linePos += item.width;
-            
-            if (float.IsNaN(item.linePos))
-                item.linePos = linePos;
-            else
-            item.linePos = Mathf.Lerp(item.linePos, linePos,1);
-
-            item.obj.localScale = lineScale(item.linePos);
-            item.obj.position = line(item.linePos);
-            item.obj.gameObject.SetActive(true);
-        }
-
-        for (int i = lidx + N; i >= ridx; i--)
-        {
-            Item item = GetItem((i+N)%N);
-            item.linePos = float.NaN;
-            item.obj.gameObject.SetActive(false);
+            {
+                item.obj.gameObject.SetActive(true);
+                var relLinePos = item.linePos - curLinePos;
+                item.obj.localPosition = line(relLinePos);
+                item.obj.localScale = lineScale(relLinePos);
+            }
         }
     }
 }

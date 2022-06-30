@@ -35,7 +35,7 @@ public class TurretBuilder : MonoBehaviour
 
     [SerializeField] Material blueprintMaterial;
 
-    void MakeBlueprint(GameObject actual)
+    void ConvertToBlueprint(GameObject actual)
     {
         foreach (Renderer r in actual.GetComponentsInChildren<Renderer>())
             r.material = blueprintMaterial;
@@ -56,20 +56,27 @@ public class TurretBuilder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach(var turret in turrets)
+        foreach (var turret in turrets)
         {
             var copy = Instantiate(turret);
             DisableFunctionality(copy);
             turretSelector.AddChild(copy.transform);
         }
+        SetCurrentTurret(turrets[0]);
     }
 
-    public void SetCurrentTurret( GameObject actual)
+    public void SetCurrentTurret(GameObject actual)
     {
         currentTurretInfo = actual.GetComponent<TurretInfo>();
-        instantiatedBlueprint = Instantiate(currentTurretInfo.blueprint);
+        if (currentTurretInfo.blueprint)
+            instantiatedBlueprint = Instantiate(currentTurretInfo.blueprint);
+        else
+        {
+            instantiatedBlueprint = Instantiate(actual);
+            ConvertToBlueprint(instantiatedBlueprint);
+        }
         currentTurret = actual;
-        
+
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 50000f, targetLayer))
         {
             instantiatedBlueprint.transform.position = hit.point;
@@ -102,44 +109,45 @@ public class TurretBuilder : MonoBehaviour
             building.SetActive(false);
         }*/
 
-        if (OVRInput.GetDown(OVRInput.RawButton.Y))
+        if (InputManager.GetDown(MonkeyKey.ToggleBuild))
         {
             if (Building)
             {
-                Building = false; 
+                Building = false;
                 instantiatedBlueprint.SetActive(false);
             }
-            else 
+            else
             {
                 Building = true;
-                 instantiatedBlueprint.SetActive(true);
+                instantiatedBlueprint.SetActive(true);
             }
 
             turretSelector.gameObject.SetActive(Building);
         }
-        
+
         if (Building)
         {
-            if (OVRInput.GetDown(OVRInput.Button.Left))
+            if (InputManager.GetDown(MonkeyKey.SelectLeft))
             {
                 turretSelector.ScrollLeft();
                 SetCurrentTurret(turrets[turretSelector.SelectionIndex]);
-            }else if (OVRInput.GetDown(OVRInput.Button.Right))
+            }
+            else if (InputManager.GetDown(MonkeyKey.SelectRight))
             {
                 turretSelector.ScrollRight();
                 SetCurrentTurret(turrets[turretSelector.SelectionIndex]);
             }
 
-            line.SetPositions(new Vector3[]{transform.position, transform.position});
-           
+            line.SetPositions(new Vector3[] { transform.position, transform.position });
+
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, float.MaxValue, targetLayer))
             {
                 instantiatedBlueprint.transform.position = hit.point;
                 line.SetPosition(1, hit.point);
 
-                if(currentTurretInfo.cost > player.Money)
+                if (currentTurretInfo.cost > player.Money)
                 {
-                    if (OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger))
+                    if (InputManager.GetDown(MonkeyKey.PlaceTurret))
                     {
                         player.Money -= currentTurretInfo.cost;
                         Instantiate(currentTurret, hit.point, Quaternion.identity);
@@ -149,10 +157,10 @@ public class TurretBuilder : MonoBehaviour
                 {
                     //TODO make blueprint red if not enuf money
                 }
-                
+
             }
         }
-        
+
 
     }
 }
