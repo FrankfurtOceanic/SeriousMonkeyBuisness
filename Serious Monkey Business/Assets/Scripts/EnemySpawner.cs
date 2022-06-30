@@ -64,13 +64,11 @@ public class EnemySpawner : MonoBehaviour
             switch (Rounds[roundIndex].Waves[waveIndex].WaveType)
             {
                 case WaveType.Simultaneous:
-                    var xPosition = 0;
                     foreach(var enemyPrefab in Rounds[roundIndex].Waves[waveIndex].EnemyPrefabs)
                     {
-                        var newEnemyS = Instantiate(enemyPrefab, Rounds[roundIndex].StartTransform.position + new Vector3(0, 0, prefabIndex), Quaternion.identity, transform);
+                        var newEnemyS = Instantiate(enemyPrefab, Rounds[roundIndex].StartTransform.position, Quaternion.identity, transform);
                         var behaviorS = newEnemyS.GetComponent<EnemyBehaviour>();
                         behaviorS.path = Rounds[roundIndex].Path;
-                        xPosition++;
                     }
                     break;
                 case WaveType.Alternating:
