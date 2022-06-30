@@ -140,7 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9210639241854698427}
   m_Layer: 0
-  m_Name: Blueprint Turret
+  m_Name: Laser Turret Blueprint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

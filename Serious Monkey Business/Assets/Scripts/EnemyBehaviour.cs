@@ -17,7 +17,7 @@ public class EnemyBehaviour : MonoBehaviour
     float startTime;
     Flash flash;
 
-    public Color liveColor = new Color(0.8f,0.8f,0.8f), deadColor=new Color(1f, 1f, 1f);
+    //public Color liveColor = new Color(0.8f,0.8f,0.8f), deadColor=new Color(1f, 1f, 1f);
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +31,7 @@ public class EnemyBehaviour : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         HP -= dmg;
-        flash.flashColor = Color.Lerp(liveColor, deadColor, 1-Mathf.Pow(HP/MaxHP, 0.9f));
+        //flash.flashColor = Color.Lerp(liveColor, deadColor, 1-Mathf.Pow(HP/MaxHP, 0.9f));
         flash.FlashMe();
     }
 

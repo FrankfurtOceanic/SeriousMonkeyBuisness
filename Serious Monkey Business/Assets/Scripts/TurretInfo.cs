@@ -5,4 +5,5 @@ using UnityEngine;
 public class TurretInfo : MonoBehaviour
 {
     public float cost;
+    public GameObject blueprint;
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(TurretRangedTargetting))]
-public class RocketTurret : MonoBehaviour
+public class RocketTurret : MonoBehaviour, ITurretComponent
 {
     [SerializeField] Transform hRotation;
     [SerializeField] Transform vRotation;
