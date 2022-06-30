@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(TurretRangedTargetting))]
-public class LaserTurretBehaviour : MonoBehaviour
+public class LaserTurretBehaviour : MonoBehaviour, ITurretComponent
 {
     [SerializeField] float DPS;
     [SerializeField] LineRenderer lineRenderer;

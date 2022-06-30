@@ -7,10 +7,6 @@ public class TurretBuilder : MonoBehaviour
 {
     RaycastHit hit;
 
-    //these two are temporary and will be gone when the player turret selection is in place
-    public GameObject blueprintPrefab;
-    public GameObject turretPrefab;
-
     [SerializeField] LayerMask targetLayer;
     [Range(0f, 1f)]
     public float TriggerThreshold = 0.1f;
@@ -27,23 +23,51 @@ public class TurretBuilder : MonoBehaviour
     LineRenderer line;
     PlayerController player;
 
+    [SerializeField] SelectionCircle turretSelector;
+
+
+
     private void Awake()
     {
         line = GetComponent<LineRenderer>();
         player = GetComponentInParent<PlayerController>(true);
     }
 
+    [SerializeField] Material blueprintMaterial;
+
+    void MakeBlueprint(GameObject actual)
+    {
+        foreach (Renderer r in actual.GetComponentsInChildren<Renderer>())
+            r.material = blueprintMaterial;
+
+        DisableFunctionality(actual);
+    }
+
+    void DisableFunctionality(GameObject turret)
+    {
+        foreach (MonoBehaviour r in turret.GetComponentsInChildren<ITurretComponent>())
+        {
+            r.enabled = false;
+        }
+    }
+
+    public List<GameObject> turrets;
 
     // Start is called before the first frame update
     void Start()
     {
-        SetCurrentTurret(blueprintPrefab, turretPrefab);
+        foreach(var turret in turrets)
+        {
+            var copy = Instantiate(turret);
+            DisableFunctionality(copy);
+            turretSelector.AddChild(copy.transform);
+        }
     }
 
-    public void SetCurrentTurret(GameObject blueprint, GameObject actual)
+    public void SetCurrentTurret( GameObject actual)
     {
         currentTurretInfo = actual.GetComponent<TurretInfo>();
-        instantiatedBlueprint = Instantiate(blueprint);
+        instantiatedBlueprint = Instantiate(currentTurretInfo.blueprint);
         currentTurret = actual;
         
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 50000f, targetLayer))
@@ -91,11 +115,21 @@ public class TurretBuilder : MonoBehaviour
                  instantiatedBlueprint.SetActive(true);
             }
 
-
+            turretSelector.gameObject.SetActive(Building);
         }
         
         if (Building)
         {
+            if (OVRInput.GetDown(OVRInput.Button.Left))
+            {
+                turretSelector.ScrollLeft();
+                SetCurrentTurret(turrets[turretSelector.SelectionIndex]);
+            }else if (OVRInput.GetDown(OVRInput.Button.Right))
+            {
+                turretSelector.ScrollRight();
+                SetCurrentTurret(turrets[turretSelector.SelectionIndex]);
+            }
+
             line.SetPositions(new Vector3[]{transform.position, transform.position});
            
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, float.MaxValue, targetLayer))

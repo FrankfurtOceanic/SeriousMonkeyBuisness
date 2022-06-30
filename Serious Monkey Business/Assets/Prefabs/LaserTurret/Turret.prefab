@@ -215,7 +215,6 @@ MonoBehaviour:
   DPS: 20
   lineRenderer: {fileID: 8385205988896925764}
   gun: {fileID: 0}
-  range: 20
 --- !u!120 &8385205988896925764
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -505,6 +504,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 5
+  blueprint: {fileID: 9210639241854698420, guid: 6fe50a7fc9eeea04db1d9ff625921eb5,
+    type: 3}
 --- !u!1 &9210639242737616947
 GameObject:
   m_ObjectHideFlags: 0
