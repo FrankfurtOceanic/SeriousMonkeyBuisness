@@ -43,13 +43,15 @@ public class SelectionCircle : MonoBehaviour
         {
             childBounds.Encapsulate(r.bounds);
         }
-        child.localScale = child.localScale / childBounds.size.y;
 
         GameObject holder = new($"Holder for {child.name}");
         holder.transform.parent = transform;
-        child.parent = holder.transform;
-        child.localPosition = Vector3.zero;
         holder.transform.localPosition = Vector3.zero;
+        
+        child.parent = holder.transform;
+        child.localScale =Vector3.one*( childSize/  childBounds.size.y) ;
+        child.localPosition = Vector3.zero;
+        
         itemsLayout = false;
         children.Add(new()
         {
