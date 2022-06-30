@@ -6895,16 +6895,21 @@ MonoBehaviour:
     - {fileID: 47222812}
     - {fileID: 1358111470}
     Waves:
-    - EnemyPrefab: {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205,
-        type: 3}
+    - EnemyPrefabs:
+      - {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205, type: 3}
+      - {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205, type: 3}
+      - {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205, type: 3}
       Frequency: 1
       Count: 10
       Duration: 15
-    - EnemyPrefab: {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205,
-        type: 3}
+      WaveType: 0
+    - EnemyPrefabs:
+      - {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205, type: 3}
+      - {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205, type: 3}
       Frequency: 0.5
       Count: 20
       Duration: 15
+      WaveType: 1
   enemyPrefab: {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205,
     type: 3}
   freq: 3
