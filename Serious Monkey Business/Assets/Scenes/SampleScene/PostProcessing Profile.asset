@@ -15,6 +15,8 @@ MonoBehaviour:
   components:
   - {fileID: 7734872180175823889}
   - {fileID: 4412911843449466075}
+  - {fileID: 5875296255339940260}
+  - {fileID: 7433978428599177400}
 --- !u!114 &4412911843449466075
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -31,6 +33,53 @@ MonoBehaviour:
   intensity:
     m_OverrideState: 1
     m_Value: 0.3
+--- !u!114 &5875296255339940260
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
+  m_Name: FilmGrain
+  m_EditorClassIdentifier: 
+  active: 1
+  type:
+    m_OverrideState: 1
+    m_Value: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.18
+  response:
+    m_OverrideState: 1
+    m_Value: 1
+  texture:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+--- !u!114 &7433978428599177400
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5485954d14dfb9a4c8ead8edb0ded5b1, type: 3}
+  m_Name: LiftGammaGain
+  m_EditorClassIdentifier: 
+  active: 1
+  lift:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 0.9065757, z: 0.9685566, w: -0.028901739}
+  gamma:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 1, z: 1, w: -0.17341053}
+  gain:
+    m_OverrideState: 1
+    m_Value: {x: 0.7376709, y: 0.67279506, z: 1, w: 0.17341039}
 --- !u!114 &7734872180175823889
 MonoBehaviour:
   m_ObjectHideFlags: 3
