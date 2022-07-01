@@ -6897,14 +6897,13 @@ MonoBehaviour:
     Waves:
     - EnemyPrefabs:
       - {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205, type: 3}
-      - {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205, type: 3}
-      - {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205, type: 3}
+      - {fileID: 4841745954993425774, guid: 9b832fb552020694f8316b7e59a5a25c, type: 3}
+      - {fileID: 2664910223241084232, guid: 4cc5d6188c09748b9aa59dac87e1dc33, type: 3}
       Frequency: 1
       Count: 10
       Duration: 15
-      WaveType: 0
+      WaveType: 1
     - EnemyPrefabs:
-      - {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205, type: 3}
       - {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205, type: 3}
       Frequency: 0.5
       Count: 20

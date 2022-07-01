@@ -25,6 +25,7 @@ public class EnemyBehaviour : MonoBehaviour
         startPosition = transform.position;
         startTime = Time.time;
         flash = GetComponentInChildren<Flash>();
+        transform.LookAt(path[index].position);
     }
     
 
@@ -47,6 +48,8 @@ public class EnemyBehaviour : MonoBehaviour
             startPosition = path[index].position;
             startTime = Time.time;
             index++;
+            if(index < path.Length)
+                transform.LookAt(path[index].position);
         }
         if(index < path.Length)
         {

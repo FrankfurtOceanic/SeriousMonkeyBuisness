@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
     int waveCount = 0;
     int prefabIndex = 0;
 
-    bool isStandy = false;
+    bool isStandby = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isStandy)
+        if (isStandby)
             return;
 
         roundTime += Time.deltaTime;
@@ -48,10 +48,11 @@ public class EnemySpawner : MonoBehaviour
             if(waveIndex > Rounds[roundIndex].Waves.Length-1)
             {
                 waveIndex = 0;
+                prefabIndex = 0;
                 roundIndex++;
                 if (roundIndex > Rounds.Length - 1)
                 {
-                    isStandy = true;
+                    isStandby = true;
                     return;
                 }
                 SetUpLine();
@@ -75,7 +76,9 @@ public class EnemySpawner : MonoBehaviour
                     var newEnemyA = Instantiate(Rounds[roundIndex].Waves[waveIndex].EnemyPrefabs[prefabIndex], Rounds[roundIndex].StartTransform.position, Quaternion.identity, transform);
                     var behaviorA = newEnemyA.GetComponent<EnemyBehaviour>();
                     behaviorA.path = Rounds[roundIndex].Path;
-                    prefabIndex = prefabIndex >= Rounds[roundIndex].Waves[waveIndex].EnemyPrefabs.Length - 1 ? 1 : prefabIndex + 1;
+                    prefabIndex++;
+                    if(prefabIndex >= Rounds[roundIndex].Waves[waveIndex].EnemyPrefabs.Length)
+                        prefabIndex = 0;
                     break;
                 default:
                     break;
