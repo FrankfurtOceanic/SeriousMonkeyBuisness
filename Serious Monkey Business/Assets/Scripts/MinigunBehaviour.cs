@@ -5,6 +5,7 @@ using UnityEngine;
 public class MinigunBehaviour : MonoBehaviour, Gun
 {
     [SerializeField] ParticleSystem m_MuzzleFlash;
+    [SerializeField] float DPS = 40;
 
     Transform m_LeftHandTransform;
     Transform m_RightHandTransform;
@@ -32,6 +33,12 @@ public class MinigunBehaviour : MonoBehaviour, Gun
     public void Fire()
     {
         m_MuzzleFlash.Play();
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 50000f))
+        {
+            var enemy = hit.transform.GetComponent<EnemyBehaviour>();
+            enemy.TakeDamage(DPS*Time.deltaTime);
+        }
     }
 
     public void EquipTo(PlayerController player)
