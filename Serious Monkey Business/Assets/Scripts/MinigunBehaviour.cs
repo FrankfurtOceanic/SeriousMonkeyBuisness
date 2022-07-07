@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MinigunBehaviour : MonoBehaviour, Gun
 {
-    Transform leftHandTransform;
-    Transform rightHandTransform;
-    [SerializeField] ParticleSystem muzzleFlash;
+    [SerializeField] ParticleSystem m_MuzzleFlash;
+
+    Transform m_LeftHandTransform;
+    Transform m_RightHandTransform;
 
     // temp hack so that player has minigun equiped at start
     private void Start()
@@ -17,9 +18,9 @@ public class MinigunBehaviour : MonoBehaviour, Gun
 
     void Update()
     {
-        transform.position = ((leftHandTransform.position + rightHandTransform.position) / 2) - 0.02f*Vector3.one;
-        var leftToRight = (rightHandTransform.position - leftHandTransform.position).normalized;
-        transform.LookAt(rightHandTransform.position + 10*leftToRight - 0.02f*Vector3.one);
+        transform.position = ((m_LeftHandTransform.position + m_RightHandTransform.position) / 2) - 0.02f*Vector3.one;
+        var leftToRight = (m_RightHandTransform.position - m_LeftHandTransform.position).normalized;
+        transform.LookAt(m_RightHandTransform.position + 10*leftToRight - 0.02f*Vector3.one);
         
         if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
         {
@@ -30,12 +31,12 @@ public class MinigunBehaviour : MonoBehaviour, Gun
 
     public void Fire()
     {
-        muzzleFlash.Play();
+        m_MuzzleFlash.Play();
     }
 
     public void EquipTo(PlayerController player)
     {
-        leftHandTransform = player.leftHand;
-        rightHandTransform = player.rightHand;
+        m_LeftHandTransform = player.leftHand;
+        m_RightHandTransform = player.rightHand;
     }
 }

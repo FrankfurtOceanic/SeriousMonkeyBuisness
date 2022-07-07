@@ -5,96 +5,94 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] Round[] Rounds;
+    [SerializeField] Round[] m_Rounds;
 
-    [SerializeField] GameObject enemyPrefab;
-    [SerializeField] float freq;
-    [SerializeField] Transform startTransform;
-    [SerializeField] Transform[] path;
+    [SerializeField] Transform m_StartTransform;
+    [SerializeField] Transform[] m_Path;
 
 
-    private LineRenderer lr;
+    private LineRenderer m_LineRenderer;
     
-    float roundTime;
-    float waveTime;
+    float m_RoundTime;
+    float m_WaveTime;
 
-    int roundIndex = 0;
-    int waveIndex = 0;
+    int m_RoundIndex = 0;
+    int m_WaveIndex = 0;
 
-    int waveCount = 0;
-    int prefabIndex = 0;
+    int m_WaveCount = 0;
+    int m_PrefabIndex = 0;
 
-    bool isStandby = false;
+    bool m_IsStandby = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        lr = GetComponent<LineRenderer>();
+        m_LineRenderer = GetComponent<LineRenderer>();
         SetUpLine();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isStandby)
+        if (m_IsStandby)
             return;
 
-        roundTime += Time.deltaTime;
-        if(roundTime > Rounds[roundIndex].Waves[waveIndex].Duration)
+        m_RoundTime += Time.deltaTime;
+        if(m_RoundTime > m_Rounds[m_RoundIndex].Waves[m_WaveIndex].Duration)
         {
-            roundTime = 0;
-            waveIndex++;
-            waveCount = 0;
-            if(waveIndex > Rounds[roundIndex].Waves.Length-1)
+            m_RoundTime = 0;
+            m_WaveIndex++;
+            m_WaveCount = 0;
+            m_PrefabIndex = 0;
+            if(m_WaveIndex >= m_Rounds[m_RoundIndex].Waves.Length)
             {
-                waveIndex = 0;
-                prefabIndex = 0;
-                roundIndex++;
-                if (roundIndex > Rounds.Length - 1)
+                m_WaveIndex = 0;
+                m_RoundIndex++;
+                if (m_RoundIndex >= m_Rounds.Length)
                 {
-                    isStandby = true;
+                    m_IsStandby = true;
                     return;
                 }
                 SetUpLine();
             }
         }
         
-        waveTime += Time.deltaTime;
-        if (waveTime >= Rounds[roundIndex].Waves[waveIndex].Frequency && waveCount < Rounds[roundIndex].Waves[waveIndex].Count)
+        m_WaveTime += Time.deltaTime;
+        if (m_WaveTime >= m_Rounds[m_RoundIndex].Waves[m_WaveIndex].Frequency && m_WaveCount < m_Rounds[m_RoundIndex].Waves[m_WaveIndex].Count)
         {
-            switch (Rounds[roundIndex].Waves[waveIndex].WaveType)
+            switch (m_Rounds[m_RoundIndex].Waves[m_WaveIndex].WaveType)
             {
                 case WaveType.Simultaneous:
-                    foreach(var enemyPrefab in Rounds[roundIndex].Waves[waveIndex].EnemyPrefabs)
+                    foreach(var enemyPrefab in m_Rounds[m_RoundIndex].Waves[m_WaveIndex].EnemyPrefabs)
                     {
-                        var newEnemyS = Instantiate(enemyPrefab, Rounds[roundIndex].StartTransform.position, Quaternion.identity, transform);
+                        var newEnemyS = Instantiate(enemyPrefab, m_StartTransform.position, Quaternion.identity, transform);
                         var behaviorS = newEnemyS.GetComponent<EnemyBehaviour>();
-                        behaviorS.path = Rounds[roundIndex].Path;
+                        behaviorS.path = m_Path;
                     }
                     break;
                 case WaveType.Alternating:
-                    var newEnemyA = Instantiate(Rounds[roundIndex].Waves[waveIndex].EnemyPrefabs[prefabIndex], Rounds[roundIndex].StartTransform.position, Quaternion.identity, transform);
+                    var newEnemyA = Instantiate(m_Rounds[m_RoundIndex].Waves[m_WaveIndex].EnemyPrefabs[m_PrefabIndex], m_StartTransform.position, Quaternion.identity, transform);
                     var behaviorA = newEnemyA.GetComponent<EnemyBehaviour>();
-                    behaviorA.path = Rounds[roundIndex].Path;
-                    prefabIndex++;
-                    if(prefabIndex >= Rounds[roundIndex].Waves[waveIndex].EnemyPrefabs.Length)
-                        prefabIndex = 0;
+                    behaviorA.path = m_Path;
+                    m_PrefabIndex++;
+                    if(m_PrefabIndex >= m_Rounds[m_RoundIndex].Waves[m_WaveIndex].EnemyPrefabs.Length)
+                        m_PrefabIndex = 0;
                     break;
                 default:
                     break;
             }
-            waveTime = 0;
-            waveCount++;
+            m_WaveTime = 0;
+            m_WaveCount++;
         }
     }
 
-    public void SetUpLine()
+    void SetUpLine()
     {
-        lr.positionCount = 1 + Rounds[roundIndex].Path.Length;
-        lr.SetPosition(0, Rounds[roundIndex].StartTransform.position);
-        for (int i = 0; i<Rounds[roundIndex].Path.Length; i++)
+        m_LineRenderer.positionCount = 1 + m_Path.Length;
+        m_LineRenderer.SetPosition(0, m_StartTransform.position);
+        for (int i = 0; i<m_Path.Length; i++)
         {
-            lr.SetPosition(i + 1, Rounds[roundIndex].Path[i].position);
+            m_LineRenderer.SetPosition(i + 1, m_Path[i].position);
         }
     }
 }
@@ -102,8 +100,6 @@ public class EnemySpawner : MonoBehaviour
 [Serializable]
 public struct Round
 {
-    public Transform StartTransform;
-    public Transform[] Path;
     public Wave[] Waves;
 }
 
