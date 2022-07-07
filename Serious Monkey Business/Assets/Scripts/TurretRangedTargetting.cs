@@ -47,7 +47,8 @@ public class TurretRangedTargetting : MonoBehaviour
             }
         }
 
-        TargetChanged?.Invoke();
+        if(Target != null)
+            TargetChanged?.Invoke();
     }
 
     public void Initialize(float range, EnemySpawner spawner)

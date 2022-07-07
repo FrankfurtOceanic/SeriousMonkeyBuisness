@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 308142650091419832}
   - component: {fileID: 117903432136188797}
+  - component: {fileID: 5363056970033561234}
   m_Layer: 0
   m_Name: MonkeyEnemy3
   m_TagString: Untagged
@@ -50,6 +51,19 @@ MonoBehaviour:
   HP: 50
   MaxHP: 50
   damage: 30
+--- !u!65 &5363056970033561234
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2664910223241084232}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.8390222, y: 1.6412659, z: 1}
+  m_Center: {x: -0.12875032, y: 0.32063305, z: 0}
 --- !u!1 &8237044943968047833
 GameObject:
   m_ObjectHideFlags: 0

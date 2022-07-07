@@ -22,12 +22,19 @@ public class MinigunBehaviour : MonoBehaviour, Gun
         transform.position = ((m_LeftHandTransform.position + m_RightHandTransform.position) / 2) - 0.02f*Vector3.one;
         var leftToRight = (m_RightHandTransform.position - m_LeftHandTransform.position).normalized;
         transform.LookAt(m_RightHandTransform.position + 10*leftToRight - 0.02f*Vector3.one);
-        
+
+#if UNITY_EDITOR
+        if (Input.GetMouseButton(0))
+        {
+            Fire();
+        }
+#else
         if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
         {
             Fire();
             OVRInput.SetControllerVibration(0.05f, 0.1f, OVRInput.Controller.LTouch);
         }
+#endif
     }
 
     public void Fire()
@@ -37,7 +44,11 @@ public class MinigunBehaviour : MonoBehaviour, Gun
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 50000f))
         {
             var enemy = hit.transform.GetComponent<EnemyBehaviour>();
-            enemy.TakeDamage(DPS*Time.deltaTime);
+            if(enemy != null)
+            {
+                enemy.TakeDamage(DPS*Time.deltaTime);
+            }
+
         }
     }
 
