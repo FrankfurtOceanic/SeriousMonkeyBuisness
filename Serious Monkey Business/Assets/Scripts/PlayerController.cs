@@ -79,5 +79,7 @@ public class PlayerController : MonoBehaviour
             transform.position = spawnPositions[index].position;
         }
 
+
+
     }
 }

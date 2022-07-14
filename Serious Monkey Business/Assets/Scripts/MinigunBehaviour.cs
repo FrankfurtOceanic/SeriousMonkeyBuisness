@@ -49,7 +49,7 @@ public class MinigunBehaviour : MonoBehaviour, Gun
 
     public void EquipTo(PlayerController player)
     {
-        m_LeftHandTransform = player.leftHand;
-        m_RightHandTransform = player.rightHand;
+        leftHandTransform = player.leftHand;
+        rightHandTransform = player.rightHand;
     }
 }

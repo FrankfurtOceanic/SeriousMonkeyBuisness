@@ -11,9 +11,6 @@ public class EnemyBehaviour : MonoBehaviour
     public float MaxHP=100;
 
     public float damage = 100;
-    public float money = 100;
-
-    public PlayerController playerController;
 
     int index = 0;
     Vector3 startPosition;
@@ -37,11 +34,6 @@ public class EnemyBehaviour : MonoBehaviour
         HP -= dmg;
         //flash.flashColor = Color.Lerp(liveColor, deadColor, 1-Mathf.Pow(HP/MaxHP, 0.9f));
         flash.FlashMe();
-        if (HP < 0)
-        {
-            playerController.Money += money;
-            Destroy(gameObject);
-        }
     }
 
     // Update is called once per frame
