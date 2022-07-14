@@ -47,10 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: []
-  speed: 6
-  HP: 50
-  MaxHP: 50
-  damage: 30
+  speed: 28.31
+  HP: 500
+  MaxHP: 500
+  damage: 93.01
 --- !u!114 &7593981869456110334
 MonoBehaviour:
   m_ObjectHideFlags: 0
