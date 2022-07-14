@@ -5,30 +5,26 @@ using UnityEngine;
 
 public class TurretRangedTargetting : MonoBehaviour
 {
-    [SerializeField] float range;
-   
-    
-    EnemySpawner m_Spawner;
-    EnemyBehaviour m_EnemyBehaviour;
-    Transform m_EnemyTransform;
+    public EnemyBehaviour Target;
+    public event Action TargetChanged;
 
-    public EnemyBehaviour Target => m_EnemyBehaviour;
-    public Action<EnemyBehaviour> TargetChanged;
+    float m_Range;
+    EnemySpawner m_Spawner;
+    Transform m_EnemyTransform;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_Spawner = FindObjectOfType<EnemySpawner>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(m_EnemyBehaviour == null)
+        if(Target == null)
         {
             TargetEnemy();
         }
-        else if ((transform.position - m_EnemyTransform.position).magnitude > range)
+        else if ((transform.position - m_EnemyTransform.position).magnitude > m_Range)
         {
             TargetEnemy();
         }
@@ -36,9 +32,9 @@ public class TurretRangedTargetting : MonoBehaviour
 
     void TargetEnemy()
     {
-        m_EnemyBehaviour = null;
+        Target = null;
         m_EnemyTransform = null;
-        float minDistance = range;
+        float minDistance = m_Range;
 
         foreach(Transform spawn in m_Spawner.transform)
         {
@@ -46,12 +42,18 @@ public class TurretRangedTargetting : MonoBehaviour
             if(distance < minDistance)
             {
                 m_EnemyTransform = spawn;
-                m_EnemyBehaviour = spawn.GetComponent<EnemyBehaviour>();
+                Target = spawn.GetComponent<EnemyBehaviour>();
                 minDistance = distance;
             }
         }
 
-        TargetChanged?.Invoke(m_EnemyBehaviour);
+        if(Target != null)
+            TargetChanged?.Invoke();
     }
 
+    public void Initialize(float range, EnemySpawner spawner)
+    {
+        m_Range = range;
+        m_Spawner = spawner;
+    }
 }

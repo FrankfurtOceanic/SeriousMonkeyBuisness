@@ -2960,6 +2960,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6808307310509569722, guid: 1d3c0cbb75087f042b092467c221ae48,
         type: 3}
+      propertyPath: m_MuzzleFlash
+      value: 
+      objectReference: {fileID: 1668213303}
+    - target: {fileID: 6808307310509569722, guid: 1d3c0cbb75087f042b092467c221ae48,
+        type: 3}
       propertyPath: leftHandTransform
       value: 
       objectReference: {fileID: 0}
@@ -2981,7 +2986,7 @@ PrefabInstance:
     - target: {fileID: 7387877231376158565, guid: 1d3c0cbb75087f042b092467c221ae48,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.46
       objectReference: {fileID: 0}
     - target: {fileID: 7387877231376158565, guid: 1d3c0cbb75087f042b092467c221ae48,
         type: 3}
@@ -3069,6 +3074,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1519865100868011386, guid: d75908bde95cad74a84e86f870814c07,
     type: 3}
   m_PrefabInstance: {fileID: 1519865101664085908}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1668213303 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3095578146388025708, guid: 1d3c0cbb75087f042b092467c221ae48,
+    type: 3}
+  m_PrefabInstance: {fileID: 1309974811}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1705941197
 GameObject:
@@ -7962,35 +7973,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af5d4b6b75c3284bb4b2cfa420416bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rounds:
-  - StartTransform: {fileID: 727149895}
-    Path:
-    - {fileID: 1269285561}
-    - {fileID: 1299305286}
-    - {fileID: 73166186}
-    - {fileID: 1252345517}
-    - {fileID: 47222812}
-    - {fileID: 1358111470}
-    Waves:
+  m_Rounds:
+  - Waves:
     - EnemyPrefabs:
-      - {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205, type: 3}
+      - {fileID: 1363766229957885616, guid: 83c8df959684947069ca9fd17ed14145, type: 3}
       - {fileID: 4841745954993425774, guid: 9b832fb552020694f8316b7e59a5a25c, type: 3}
       - {fileID: 2664910223241084232, guid: 4cc5d6188c09748b9aa59dac87e1dc33, type: 3}
       Frequency: 1
       Count: 10
-      Duration: 15
-      WaveType: 1
+      Duration: 12
+      WaveType: 0
     - EnemyPrefabs:
-      - {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205, type: 3}
+      - {fileID: 1363766229957885616, guid: 83c8df959684947069ca9fd17ed14145, type: 3}
+      - {fileID: 2664910223241084232, guid: 4cc5d6188c09748b9aa59dac87e1dc33, type: 3}
       Frequency: 0.5
       Count: 20
-      Duration: 15
-      WaveType: 1
-  enemyPrefab: {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205,
-    type: 3}
-  freq: 3
-  startTransform: {fileID: 727149895}
-  path:
+      Duration: 12
+      WaveType: 0
+  m_StartTransform: {fileID: 727149895}
+  m_Path:
   - {fileID: 1269285561}
   - {fileID: 1299305286}
   - {fileID: 73166186}

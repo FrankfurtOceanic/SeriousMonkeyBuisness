@@ -5,6 +5,17 @@ using UnityEngine;
 [RequireComponent(typeof(TurretRangedTargetting))]
 public class RocketTurret : MonoBehaviour, ITurretComponent
 {
+    public float DPS { get { return m_DPS; } }
+    public float Cost { get { return m_Cost; } }
+    public float Range { get { return m_Range; } }
+    public GameObject Blueprint  { get { return m_Blueprint; } }
+    public EnemySpawner Spawner { get; set; }
+
+    [SerializeField] float m_DPS;
+    [SerializeField] float m_Cost;
+    [SerializeField] float m_Range;
+    [SerializeField] GameObject m_Blueprint;
+
     [SerializeField] Transform hRotation;
     [SerializeField] Transform vRotation;
 
@@ -19,12 +30,15 @@ public class RocketTurret : MonoBehaviour, ITurretComponent
     /// </summary>
     [SerializeField] float maxAngleForFire = 20;
 
-    private TurretRangedTargetting targetting;
+    private TurretRangedTargetting m_Targeting;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        targetting = GetComponent<TurretRangedTargetting>();
+        m_Targeting = GetComponent<TurretRangedTargetting>();
+        if(Spawner == null)
+            Spawner = Object.FindObjectOfType<EnemySpawner>();
+        m_Targeting.Initialize(Range, Spawner);
     }
 
     float h,v;
@@ -32,9 +46,9 @@ public class RocketTurret : MonoBehaviour, ITurretComponent
     // Update is called once per frame
     void Update()
     {
-        if (targetting.Target != null)
+        if (m_Targeting.Target != null)
         {
-            Vector3 targetDir = targetting.Target.transform.position - vRotation.position;
+            Vector3 targetDir = m_Targeting.Target.transform.position - vRotation.position;
 
             var targetRot = Quaternion.LookRotation(targetDir);
 
@@ -60,7 +74,7 @@ public class RocketTurret : MonoBehaviour, ITurretComponent
                     {
                         lastFireTime = now;
                         Rocket rocketSpawned = Instantiate(rocket, rocketSpawnPos);
-                        rocketSpawned.target = targetting.Target.gameObject;
+                        rocketSpawned.target = m_Targeting.Target.gameObject;
                         rocketSpawned.transform.parent = null;
                     }
                 }
