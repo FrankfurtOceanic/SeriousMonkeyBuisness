@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] PlayerController m_PlayerController;
     [SerializeField] Round[] m_Rounds;
 
     [SerializeField] Transform m_StartTransform;
@@ -68,12 +69,14 @@ public class EnemySpawner : MonoBehaviour
                         var newEnemyS = Instantiate(enemyPrefab, m_StartTransform.position, Quaternion.identity, transform);
                         var behaviorS = newEnemyS.GetComponent<EnemyBehaviour>();
                         behaviorS.path = m_Path;
+                        behaviorS.playerController = m_PlayerController;
                     }
                     break;
                 case WaveType.Alternating:
                     var newEnemyA = Instantiate(m_Rounds[m_RoundIndex].Waves[m_WaveIndex].EnemyPrefabs[m_PrefabIndex], m_StartTransform.position, Quaternion.identity, transform);
                     var behaviorA = newEnemyA.GetComponent<EnemyBehaviour>();
                     behaviorA.path = m_Path;
+                    behaviorA.playerController = m_PlayerController;
                     m_PrefabIndex++;
                     if(m_PrefabIndex >= m_Rounds[m_RoundIndex].Waves[m_WaveIndex].EnemyPrefabs.Length)
                         m_PrefabIndex = 0;
