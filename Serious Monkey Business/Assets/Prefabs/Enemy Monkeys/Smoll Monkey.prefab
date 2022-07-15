@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 308142650091419832}
   - component: {fileID: 117903432136188797}
-  - component: {fileID: 7593981869456110334}
+  - component: {fileID: 7688370703496327560}
   m_Layer: 0
   m_Name: Smoll Monkey
   m_TagString: Untagged
@@ -47,25 +47,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: []
-  speed: 28.31
-  HP: 500
-  MaxHP: 500
-  damage: 93.01
---- !u!114 &7593981869456110334
-MonoBehaviour:
+  speed: 5
+  HP: 50
+  MaxHP: 50
+  damage: 5
+  money: 100
+  playerController: {fileID: 0}
+--- !u!65 &7688370703496327560
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2664910223241084232}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8638aa40e935cd448b6e8f85958f960, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flashColor: {r: 1, g: 1, b: 1, a: 1}
-  flashCooldown: 1
-  flashDecreaseRate: 1
+  serializedVersion: 2
+  m_Size: {x: 2.8972795, y: 1.8394691, z: 1}
+  m_Center: {x: -0.057778716, y: 0.41973478, z: 0}
 --- !u!1 &8237044943968047833
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 8720108043613030499}
   - component: {fileID: 5668861525437958086}
   - component: {fileID: 7588319958401757964}
+  - component: {fileID: 5808275582928096523}
   m_Layer: 0
   m_Name: Joey's first monke
   m_TagString: Untagged
@@ -91,14 +92,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8237044943968047833}
-  m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: 0, w: 0}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 308142650091419832}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 90}
 --- !u!33 &5668861525437958086
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -149,3 +150,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5808275582928096523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8237044943968047833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8638aa40e935cd448b6e8f85958f960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashCooldown: 1
+  flashDecreaseRate: 1

@@ -5,10 +5,9 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] PlayerController playerController;
     [SerializeField] Round[] Rounds;
-
-    [SerializeField] GameObject enemyPrefab;
-    [SerializeField] float freq;
+    
     [SerializeField] Transform startTransform;
     [SerializeField] Transform[] path;
 
@@ -67,15 +66,17 @@ public class EnemySpawner : MonoBehaviour
                 case WaveType.Simultaneous:
                     foreach(var enemyPrefab in Rounds[roundIndex].Waves[waveIndex].EnemyPrefabs)
                     {
-                        var newEnemyS = Instantiate(enemyPrefab, Rounds[roundIndex].StartTransform.position, Quaternion.identity, transform);
+                        var newEnemyS = Instantiate(enemyPrefab, startTransform.position, Quaternion.identity, transform);
                         var behaviorS = newEnemyS.GetComponent<EnemyBehaviour>();
-                        behaviorS.path = Rounds[roundIndex].Path;
+                        behaviorS.path = path;
+                        behaviorS.playerController = playerController;
                     }
                     break;
                 case WaveType.Alternating:
-                    var newEnemyA = Instantiate(Rounds[roundIndex].Waves[waveIndex].EnemyPrefabs[prefabIndex], Rounds[roundIndex].StartTransform.position, Quaternion.identity, transform);
+                    var newEnemyA = Instantiate(Rounds[roundIndex].Waves[waveIndex].EnemyPrefabs[prefabIndex], startTransform.position, Quaternion.identity, transform);
                     var behaviorA = newEnemyA.GetComponent<EnemyBehaviour>();
-                    behaviorA.path = Rounds[roundIndex].Path;
+                    behaviorA.path = path;
+                    behaviorA.playerController = playerController;
                     prefabIndex++;
                     if(prefabIndex >= Rounds[roundIndex].Waves[waveIndex].EnemyPrefabs.Length)
                         prefabIndex = 0;
@@ -90,11 +91,11 @@ public class EnemySpawner : MonoBehaviour
 
     public void SetUpLine()
     {
-        lr.positionCount = 1 + Rounds[roundIndex].Path.Length;
-        lr.SetPosition(0, Rounds[roundIndex].StartTransform.position);
-        for (int i = 0; i<Rounds[roundIndex].Path.Length; i++)
+        lr.positionCount = 1 + path.Length;
+        lr.SetPosition(0, startTransform.position);
+        for (int i = 0; i<path.Length; i++)
         {
-            lr.SetPosition(i + 1, Rounds[roundIndex].Path[i].position);
+            lr.SetPosition(i + 1, path[i].position);
         }
     }
 }
@@ -102,8 +103,6 @@ public class EnemySpawner : MonoBehaviour
 [Serializable]
 public struct Round
 {
-    public Transform StartTransform;
-    public Transform[] Path;
     public Wave[] Waves;
 }
 

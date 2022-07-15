@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.096561536, g: 0.060317025, b: 0.055084247, a: 1}
+  m_IndirectSpecularColor: {r: 0.09648329, g: 0.060468435, b: 0.054729395, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7962,33 +7962,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af5d4b6b75c3284bb4b2cfa420416bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 178130521}
   Rounds:
-  - StartTransform: {fileID: 727149895}
-    Path:
-    - {fileID: 1269285561}
-    - {fileID: 1299305286}
-    - {fileID: 73166186}
-    - {fileID: 1252345517}
-    - {fileID: 47222812}
-    - {fileID: 1358111470}
-    Waves:
+  - Waves:
     - EnemyPrefabs:
-      - {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205, type: 3}
+      - {fileID: 1363766229957885616, guid: 83c8df959684947069ca9fd17ed14145, type: 3}
       - {fileID: 4841745954993425774, guid: 9b832fb552020694f8316b7e59a5a25c, type: 3}
       - {fileID: 2664910223241084232, guid: 4cc5d6188c09748b9aa59dac87e1dc33, type: 3}
       Frequency: 1
-      Count: 10
-      Duration: 15
-      WaveType: 1
-    - EnemyPrefabs:
-      - {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205, type: 3}
-      Frequency: 0.5
-      Count: 20
-      Duration: 15
-      WaveType: 1
-  enemyPrefab: {fileID: 1363766229957885616, guid: 5f315b43baa7d3f4f9884ddd3e26b205,
-    type: 3}
-  freq: 3
+      Count: 25
+      Duration: 30
+      WaveType: 0
   startTransform: {fileID: 727149895}
   path:
   - {fileID: 1269285561}
