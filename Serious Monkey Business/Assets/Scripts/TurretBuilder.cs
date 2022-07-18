@@ -67,6 +67,11 @@ public class TurretBuilder : MonoBehaviour
 
     public void SetCurrentTurret(GameObject actual)
     {
+        if (instantiatedBlueprint != null)
+        {
+            Destroy(instantiatedBlueprint);
+        }
+        
         currentTurretInfo = actual.GetComponent<ITurretComponent>();
         if (currentTurretInfo.Blueprint)
             instantiatedBlueprint = Instantiate(currentTurretInfo.Blueprint);
@@ -145,7 +150,7 @@ public class TurretBuilder : MonoBehaviour
                 instantiatedBlueprint.transform.position = hit.point;
                 line.SetPosition(1, hit.point);
 
-                if (currentTurretInfo.Cost > player.Money)
+                if (currentTurretInfo.Cost <= player.Money)
                 {
                     if (InputManager.GetDown(MonkeyKey.PlaceTurret))
                     {
