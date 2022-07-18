@@ -15,6 +15,8 @@ public class TurretRangedTargetting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        var turret = GetComponent<ITurretComponent>();
+        Initialize(turret.Range, FindObjectOfType<EnemySpawner>());
     }
 
     // Update is called once per frame

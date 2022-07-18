@@ -38,7 +38,6 @@ public class RocketTurret : MonoBehaviour, ITurretComponent
         m_Targeting = GetComponent<TurretRangedTargetting>();
         if(Spawner == null)
             Spawner = Object.FindObjectOfType<EnemySpawner>();
-        m_Targeting.Initialize(Range, Spawner);
     }
 
     float h,v;

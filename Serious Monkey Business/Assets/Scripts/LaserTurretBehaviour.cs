@@ -29,7 +29,6 @@ public class LaserTurretBehaviour : MonoBehaviour, ITurretComponent
         targetting.TargetChanged += Targetting_TargetChanged;
         if(Spawner == null)
             Spawner = Object.FindObjectOfType<EnemySpawner>();
-        targetting.Initialize(Range, Spawner);
     }
 
     // Update is called once per frame
