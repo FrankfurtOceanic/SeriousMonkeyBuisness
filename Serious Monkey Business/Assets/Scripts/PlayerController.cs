@@ -6,9 +6,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] Transform godPosition;
-    [SerializeField] Transform[] spawnPositions;
-
     public Transform leftHand;
     public Transform rightHand;
 
@@ -59,7 +56,7 @@ public class PlayerController : MonoBehaviour
     {
 
 
-        
+        /*
         if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger)&&OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
         {
             transform.position = godPosition.position;
@@ -77,7 +74,7 @@ public class PlayerController : MonoBehaviour
             if (index < 0)
                 index = spawnPositions.Length-1;
             transform.position = spawnPositions[index].position;
-        }
+        }*/
 
 
 
