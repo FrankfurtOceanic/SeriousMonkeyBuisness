@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 952018182191955203}
   - component: {fileID: 952018182191955200}
   - component: {fileID: 952018182191955201}
+  - component: {fileID: 6510860372664344254}
   m_Layer: 5
   m_Name: Health World Canvas
   m_TagString: Untagged
@@ -178,6 +179,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6510860372664344254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952018182191955214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a4947842a4b1425ab4e0406f60e141e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}
 --- !u!1 &952018183495267955
 GameObject:
   m_ObjectHideFlags: 0
