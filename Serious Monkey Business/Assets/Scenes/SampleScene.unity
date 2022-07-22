@@ -8012,6 +8012,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1256098487}
     m_Modifications:
+    - target: {fileID: 952018181913031142, guid: 6c6796d4ab1c64e8abfc0763b1816f62,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 952018181913031142, guid: 6c6796d4ab1c64e8abfc0763b1816f62,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 952018181913031142, guid: 6c6796d4ab1c64e8abfc0763b1816f62,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 952018182191955202, guid: 6c6796d4ab1c64e8abfc0763b1816f62,
         type: 3}
       propertyPath: m_Pivot.x
@@ -8085,7 +8100,7 @@ PrefabInstance:
     - target: {fileID: 952018182191955202, guid: 6c6796d4ab1c64e8abfc0763b1816f62,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0569
+      value: 0.023
       objectReference: {fileID: 0}
     - target: {fileID: 952018182191955202, guid: 6c6796d4ab1c64e8abfc0763b1816f62,
         type: 3}
@@ -8115,7 +8130,7 @@ PrefabInstance:
     - target: {fileID: 952018182191955202, guid: 6c6796d4ab1c64e8abfc0763b1816f62,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0376
+      value: 0.099
       objectReference: {fileID: 0}
     - target: {fileID: 952018182191955202, guid: 6c6796d4ab1c64e8abfc0763b1816f62,
         type: 3}
@@ -8136,6 +8151,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Health World Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 952018183495267954, guid: 6c6796d4ab1c64e8abfc0763b1816f62,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 952018183495267954, guid: 6c6796d4ab1c64e8abfc0763b1816f62,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 952018183495267954, guid: 6c6796d4ab1c64e8abfc0763b1816f62,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 6510860372664344254, guid: 6c6796d4ab1c64e8abfc0763b1816f62,
         type: 3}
