@@ -16,7 +16,7 @@ public class TurretBuilder : MonoBehaviour
     //these store the actual current turret type to build
     private GameObject currentTurret;
     private GameObject instantiatedBlueprint;
-    private TurretInfo currentTurretInfo;
+    private ITurretComponent currentTurretInfo;
 
     bool Building = false;
 
@@ -67,9 +67,14 @@ public class TurretBuilder : MonoBehaviour
 
     public void SetCurrentTurret(GameObject actual)
     {
-        currentTurretInfo = actual.GetComponent<TurretInfo>();
-        if (currentTurretInfo.blueprint)
-            instantiatedBlueprint = Instantiate(currentTurretInfo.blueprint);
+        if (instantiatedBlueprint != null)
+        {
+            Destroy(instantiatedBlueprint);
+        }
+        
+        currentTurretInfo = actual.GetComponent<ITurretComponent>();
+        if (currentTurretInfo.Blueprint)
+            instantiatedBlueprint = Instantiate(currentTurretInfo.Blueprint);
         else
         {
             instantiatedBlueprint = Instantiate(actual);
@@ -145,11 +150,11 @@ public class TurretBuilder : MonoBehaviour
                 instantiatedBlueprint.transform.position = hit.point;
                 line.SetPosition(1, hit.point);
 
-                if (currentTurretInfo.cost > player.Money)
+                if (currentTurretInfo.Cost <= player.Money)
                 {
                     if (InputManager.GetDown(MonkeyKey.PlaceTurret))
                     {
-                        player.Money -= currentTurretInfo.cost;
+                        player.Money -= currentTurretInfo.Cost;
                         Instantiate(currentTurret, hit.point, Quaternion.identity);
                     }
                 }

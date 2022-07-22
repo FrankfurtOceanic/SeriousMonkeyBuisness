@@ -110,9 +110,7 @@ GameObject:
   - component: {fileID: 6555420082565106572}
   - component: {fileID: 5293370151154767805}
   - component: {fileID: 4928122129464072284}
-  - component: {fileID: 4128054226766127321}
   - component: {fileID: 8385205988896925764}
-  - component: {fileID: 8684711291801502769}
   m_Layer: 0
   m_Name: LaserGun
   m_TagString: Untagged
@@ -200,21 +198,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4128054226766127321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7651512584869146280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff76ae68e003c1419fc09c712cc2779, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DPS: 20
-  lineRenderer: {fileID: 8385205988896925764}
-  gun: {fileID: 0}
 --- !u!120 &8385205988896925764
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -314,19 +297,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
---- !u!114 &8684711291801502769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7651512584869146280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47f5d23cdcd1f34dae3b52680663be1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  range: 20
 --- !u!1 &8654138646979201217
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +437,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9210639241854698427}
-  - component: {fileID: 8589678042503563496}
+  - component: {fileID: 577819966307362213}
+  - component: {fileID: 6594895598508207259}
   m_Layer: 0
   m_Name: Laser Turret
   m_TagString: Untagged
@@ -491,7 +462,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8589678042503563496
+--- !u!114 &577819966307362213
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -500,12 +471,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 9210639241854698420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 043451d0dd37d3148aacdf4b964293e5, type: 3}
+  m_Script: {fileID: 11500000, guid: e47f5d23cdcd1f34dae3b52680663be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 5
-  blueprint: {fileID: 9210639241854698420, guid: 6fe50a7fc9eeea04db1d9ff625921eb5,
+  Target: {fileID: 0}
+--- !u!114 &6594895598508207259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9210639241854698420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff76ae68e003c1419fc09c712cc2779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DPS: 20
+  m_Cost: 5
+  m_Range: 20
+  m_Blueprint: {fileID: 9210639241854698420, guid: 6fe50a7fc9eeea04db1d9ff625921eb5,
     type: 3}
+  m_LineRenderer: {fileID: 8385205988896925764}
 --- !u!1 &9210639242737616947
 GameObject:
   m_ObjectHideFlags: 0
