@@ -10,9 +10,21 @@ using UnityEngine;
 public class Collider2Event : MonoBehaviour
 {
     public event Action<Collider> EventTriggerEnter;
+    public event Action<Collider> EventTriggerExit;
+    public event Action<Collider> EventTriggerStay;
 
     private void OnTriggerEnter(Collider other)
     {
         EventTriggerEnter?.Invoke(other);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        EventTriggerExit?.Invoke(other);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        EventTriggerStay?.Invoke(other);
     }
 }
