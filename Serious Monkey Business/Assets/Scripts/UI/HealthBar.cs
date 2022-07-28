@@ -7,7 +7,6 @@ using TMPro;
 
 public class HealthBar : MonoBehaviour
 {
-    public Text healthText;
     public Image healthBar;
     public TMP_Text TMPhealthText;
 
@@ -40,7 +39,6 @@ public class HealthBar : MonoBehaviour
         if (!hasTakenDamage) hasTakenDamage = true;
         currHealth = hp;
         initialHealth = initialHP;
-        healthText.text = $"HP: {hp}";
         TMPhealthText.SetText(hp.ToString("F0"));
     }
 

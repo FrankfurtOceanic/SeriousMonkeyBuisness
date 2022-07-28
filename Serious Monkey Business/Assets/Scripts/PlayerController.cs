@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public float initialHealth;
     public float initialMoney;
 
+    public HealthBar healthBar;
+
     float health;
     float money;
 
@@ -20,6 +22,10 @@ public class PlayerController : MonoBehaviour
         get => health; set
         {
             health = value;
+            if(health < 0)
+            {
+
+            }
             HealthChanged?.Invoke(value);
         }
     }
@@ -47,6 +53,17 @@ public class PlayerController : MonoBehaviour
     {
         Health = initialHealth;
         Money = initialMoney;
+        HealthChanged += PlayerController_HealthChanged;
+    }
+
+    private void OnDestroy()
+    {
+        HealthChanged -= PlayerController_HealthChanged;
+    }
+
+    private void PlayerController_HealthChanged(float hp)
+    {
+        healthBar.SetHealthAmt(hp, initialHealth);
     }
 
     int index = 0;
@@ -76,7 +93,7 @@ public class PlayerController : MonoBehaviour
             transform.position = spawnPositions[index].position;
         }*/
 
-
-
     }
+
+
 }
