@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float initialMoney;
 
     public HealthBar healthBar;
+    public MoneyUI moneyUI;
 
     float health;
     float money;
@@ -22,10 +23,6 @@ public class PlayerController : MonoBehaviour
         get => health; set
         {
             health = value;
-            if(health < 0)
-            {
-
-            }
             HealthChanged?.Invoke(value);
         }
     }
@@ -54,16 +51,22 @@ public class PlayerController : MonoBehaviour
         Health = initialHealth;
         Money = initialMoney;
         HealthChanged += PlayerController_HealthChanged;
+        MoneyChanged += PlayerController_MoneyChanged;
     }
 
     private void OnDestroy()
     {
         HealthChanged -= PlayerController_HealthChanged;
+        MoneyChanged -= PlayerController_MoneyChanged;
     }
 
     private void PlayerController_HealthChanged(float hp)
     {
         healthBar.SetHealthAmt(hp, initialHealth);
+    }
+    private void PlayerController_MoneyChanged(float m)
+    {
+        moneyUI.SetMoney(m);
     }
 
     int index = 0;
