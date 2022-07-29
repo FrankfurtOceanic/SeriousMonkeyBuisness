@@ -8,6 +8,7 @@ public class GameOver : MonoBehaviour
     [SerializeField] PlayerController m_PlayerController;
     [SerializeField] Volume postProcessing;
     [SerializeField] VolumeProfile gameOverProfile;
+    [SerializeField] PostProcessingAdjuster PPA;
 
     // Start is called before the first frame update
     void Awake()
@@ -22,11 +23,14 @@ public class GameOver : MonoBehaviour
             GameIsOver();
         }
     }
-    
+
+  
+
     [ContextMenu("GameOver")]
     void GameIsOver()
     {
         Time.timeScale = 0.1f;
-        postProcessing.profile = gameOverProfile;
+        //postProcessing.profile = gameOverProfile;
+        PPA.setIsDead();
     }
 }

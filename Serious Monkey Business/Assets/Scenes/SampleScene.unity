@@ -284,6 +284,7 @@ MonoBehaviour:
   m_PlayerController: {fileID: 178130521}
   postProcessing: {fileID: 336678925}
   gameOverProfile: {fileID: 11400000, guid: adf01175499756240beaec960a3ccc48, type: 2}
+  PPA: {fileID: 336678927}
 --- !u!4 &97673622
 Transform:
   m_ObjectHideFlags: 0
@@ -835,6 +836,7 @@ GameObject:
   m_Component:
   - component: {fileID: 336678926}
   - component: {fileID: 336678925}
+  - component: {fileID: 336678927}
   m_Layer: 0
   m_Name: PostProcessing
   m_TagString: Untagged
@@ -874,6 +876,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &336678927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336678924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb62b47548c6416884e717d09008b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameVolume: {fileID: 11400000, guid: c3defb537f9d4425fac7446d356513d2, type: 2}
+  lerpSpeed: 4
+  deadSaturation: -100
 --- !u!1001 &355381129
 PrefabInstance:
   m_ObjectHideFlags: 0
