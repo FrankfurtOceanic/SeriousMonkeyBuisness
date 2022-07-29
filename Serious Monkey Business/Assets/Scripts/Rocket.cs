@@ -18,53 +18,47 @@ public class Rocket : MonoBehaviour
 
     public float DamageAmt;
 
-    private void Start()
+    void Awake()
     {
-        foreach (var collider in GetComponentsInChildren<Collider2Event>())
-        {
-            collider.EventTriggerEnter += Collider_EventTriggerEnter;
-        }
     }
 
-    private void OnDestroy()
+    private void OnTriggerEnter(Collider obj)
     {
-
-        foreach (var collider in GetComponentsInChildren<Collider2Event>())
-        {
-            collider.EventTriggerEnter -= Collider_EventTriggerEnter;
-        }
+        var enemy = obj.GetComponent<EnemyBehaviour>();
+        if(enemy != null)
+            Explosion();
     }
-
-    private void Collider_EventTriggerEnter(Collider other)
+    
+    private void Explosion()
     {
-        //TODO freeze rocket and object, add shake, delay explosion
-
-        var enemy=other.GetComponent<EnemyBehaviour>();
-        if (enemy != null)
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2);
+        foreach (var hitCollider in hitColliders)
         {
-            enemy.TakeDamage(DamageAmt);
+            var enemy = hitCollider.GetComponent<EnemyBehaviour>();
+            enemy?.TakeDamage(9000);
         }
-
         smoke.StopAndDetach();
         Instantiate(explosion, transform.position, transform.rotation, null);
-
         Destroy(gameObject);
     }
+    
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        if (target == null)
+        {
+            Explosion();
+            return;
+        }
 
         // gets faster at rotating as it goes
         rotationSpeed += (Random.value - 0.5f + rotationSpeedBias) * 2 * Time.deltaTime * rotationSpeedChangeRate;
         rotationSpeed = Mathf.Clamp(rotationSpeed, rotationSpeedMin, rotationSpeedMax);
 
         // rotate towards enemy
-        if (target != null)
-        {
-            Vector3 enemyDir = target.transform.position - transform.position;
-            transform.forward = Vector3.Slerp(transform.forward, enemyDir, Time.deltaTime * rotationSpeed);
-        }
+        Vector3 enemyDir = target.transform.position - transform.position;
+        transform.forward = Vector3.Slerp(transform.forward, enemyDir, Time.deltaTime * rotationSpeed);
 
         //acceleration
         speed = Mathf.Min(maxSpeed, speed + accel * Time.deltaTime);

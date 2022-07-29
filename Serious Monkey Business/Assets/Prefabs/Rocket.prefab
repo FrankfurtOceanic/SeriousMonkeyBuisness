@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3326722864290134395}
   - component: {fileID: 3531950220205521577}
   - component: {fileID: 7404790674296525152}
-  - component: {fileID: 4617532447848635602}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -84,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4617532447848635602
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2152035376821940984}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &4728044840641365222
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,9 +94,6 @@ GameObject:
   - component: {fileID: 4796270368982669765}
   - component: {fileID: 1106661181061871682}
   - component: {fileID: 3163964469835346917}
-  - component: {fileID: 5819818054279249373}
-  - component: {fileID: 5782527662719258996}
-  - component: {fileID: 8848826626609649028}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -184,47 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5819818054279249373
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4728044840641365222}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &5782527662719258996
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4728044840641365222}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &8848826626609649028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4728044840641365222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5d4fd32de578b8459677992a1eb1dd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5264234850813210456
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +176,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4696246090334602212}
   - component: {fileID: 4816188932237224957}
+  - component: {fileID: 2136956888534444446}
+  - component: {fileID: 66873902752852744}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -287,6 +230,35 @@ MonoBehaviour:
   explosion: {fileID: 4005684152097356908, guid: 5931c02d73de1924694c181702efb659,
     type: 3}
   DamageAmt: 10
+--- !u!54 &2136956888534444446
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5264234850813210456}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &66873902752852744
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5264234850813210456}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 2.7949505}
+  m_Center: {x: 0, y: 0, z: 0.1117301}
 --- !u!1 &6070911419921184456
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +270,6 @@ GameObject:
   - component: {fileID: 7585270026205105609}
   - component: {fileID: 2910576306137294728}
   - component: {fileID: 694423279059071859}
-  - component: {fileID: 248184421506566827}
   m_Layer: 0
   m_Name: Plane (1)
   m_TagString: Untagged
@@ -371,20 +342,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &248184421506566827
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6070911419921184456}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &7246128779839409752
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,7 +353,6 @@ GameObject:
   - component: {fileID: 101938390250448370}
   - component: {fileID: 2060120310194813829}
   - component: {fileID: 271281264083261600}
-  - component: {fileID: 8606780559438485161}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -469,20 +425,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8606780559438485161
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7246128779839409752}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.50000024
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604623, y: 8.6026784e-23, z: -0.00000008940698}
 --- !u!1001 &2522634421481456524
 PrefabInstance:
   m_ObjectHideFlags: 0
