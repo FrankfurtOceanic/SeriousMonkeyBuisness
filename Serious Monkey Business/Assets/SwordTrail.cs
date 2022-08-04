@@ -22,10 +22,14 @@ public class SwordTrail : MonoBehaviour
     private Vector3 _previousTipPosition;
     private Vector3 _previousBasePosition;
 
+    private void Awake()
+    {
+        
+        content = new GameObject();
+    }
     void Start()
     {
         _mesh = new Mesh();
-        content = new GameObject();
         var renderer = content.AddComponent<MeshRenderer>();
         renderer.material = trailMaterial;
         content.AddComponent<MeshFilter>().mesh = _mesh;

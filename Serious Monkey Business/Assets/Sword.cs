@@ -28,6 +28,8 @@ public class Sword : MonoBehaviour
 
     Vector3 lastTipPos;
 
+    [SerializeField] ParticleSystem m_MuzzleFlash;
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +42,7 @@ public class Sword : MonoBehaviour
 
         foreach (var collider in GetComponentsInChildren<Collider2Event>())
         {
-            collider.EventTriggerStay += Collider_EventTriggerStay;
+            collider.EventCollisionStay += Collider_EventCollisionStay;
         }
     }
 
@@ -48,17 +50,22 @@ public class Sword : MonoBehaviour
     {
         foreach (var collider in GetComponentsInChildren<Collider2Event>())
         {
-            collider.EventTriggerStay -= Collider_EventTriggerStay;
+            collider.EventCollisionStay -= Collider_EventCollisionStay;
         }
     }
 
-    private void Collider_EventTriggerStay(Collider obj)
+    private void Collider_EventCollisionStay(Collision collision)
     {
+        var obj = collision.gameObject;
         var enemy = obj.GetComponent<EnemyBehaviour>(); //TODO performance concerns?
         if (enemy != null)
         {
             enemy.TakeDamage(DPS * Time.deltaTime);
+            m_MuzzleFlash.transform.position = collision.GetContact(0).point;
+            m_MuzzleFlash.Play();
         }
+
+        
     }
 
     public float temperature = 0;
@@ -77,10 +84,10 @@ public class Sword : MonoBehaviour
 
             swordParent.localRotation.SetLookRotation(direction, Vector3.up);
         }
-        OVRInput.SetControllerVibration(velocityPercent, velocityPercent, OVRInput.Controller.RHand);
+        OVRInput.SetControllerVibration(velocityPercent*10, velocityPercent*10, OVRInput.Controller.RHand);
         temperature = Mathf.Max(0, temperature - cooldownRate * temperature * Time.deltaTime);
-        temperature = Mathf.Max(temperature, velocityPercent); //Mathf.Min(1, temperature + velocity * heatupRatio * Time.deltaTime);
-        swordRenderer.material.SetColor("_Emission", burnGradient.Evaluate(velocityPercent));
+        temperature = Mathf.Min(1, temperature + velocity * heatupRatio * Time.deltaTime);
+        swordRenderer.material.SetColor("_Emission", burnGradient.Evaluate(temperature));
         lastTipPos = curTipPos;
     }
 }

@@ -12,6 +12,7 @@ public class Collider2Event : MonoBehaviour
     public event Action<Collider> EventTriggerEnter;
     public event Action<Collider> EventTriggerExit;
     public event Action<Collider> EventTriggerStay;
+    public event Action<Collision> EventCollisionStay;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -26,5 +27,10 @@ public class Collider2Event : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         EventTriggerStay?.Invoke(other);
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        EventCollisionStay?.Invoke(collision);
     }
 }
