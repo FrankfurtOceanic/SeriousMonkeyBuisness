@@ -28,7 +28,9 @@ public class Sword : MonoBehaviour
 
     Vector3 lastTipPos;
 
-    [SerializeField] ParticleSystem m_MuzzleFlash;
+    [SerializeField] ParticleSystem hitSpark;
+
+    List<ParticleSystem> hitSparkCache = new(); //reuse previously instatiated hit sparks
 
 
     // Start is called before the first frame update
@@ -61,11 +63,16 @@ public class Sword : MonoBehaviour
         if (enemy != null)
         {
             enemy.TakeDamage(DPS * Time.deltaTime);
-            m_MuzzleFlash.transform.position = collision.GetContact(0).point;
-            m_MuzzleFlash.Play();
-        }
 
-        
+            for (int i = 0; i < collision.contactCount - hitSparkCache.Count; i++)
+                hitSparkCache.Add(Instantiate(hitSpark, swordParent));
+
+            for (int i = 0; i < collision.contactCount; i++)
+            {
+                hitSparkCache[i].transform.position = collision.GetContact(i).point;
+                hitSparkCache[i].Play();
+            }
+        }
     }
 
     public float temperature = 0;
@@ -78,13 +85,14 @@ public class Sword : MonoBehaviour
         Vector3 delta = curTipPos - lastTipPos;
         var velocity = delta.magnitude / Time.deltaTime;
         var velocityPercent = Mathf.Min(1, velocity/maxVelocity);
-        if (velocity > rotThres){
+        if (velocity > rotThres)
+        {
             var direction = transform.InverseTransformDirection(delta);
             direction.y = 0;
 
             swordParent.localRotation.SetLookRotation(direction, Vector3.up);
         }
-        OVRInput.SetControllerVibration(velocityPercent*10, velocityPercent*10, OVRInput.Controller.RHand);
+        OVRInput.SetControllerVibration(velocityPercent * 10, velocityPercent * 10, OVRInput.Controller.RHand);
         temperature = Mathf.Max(0, temperature - cooldownRate * temperature * Time.deltaTime);
         temperature = Mathf.Min(1, temperature + velocity * heatupRatio * Time.deltaTime);
         swordRenderer.material.SetColor("_Emission", burnGradient.Evaluate(temperature));

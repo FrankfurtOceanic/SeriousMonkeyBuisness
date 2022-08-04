@@ -31,7 +31,6 @@ Transform:
   - {fileID: 9027321683989585293}
   - {fileID: 3440699259017126437}
   - {fileID: 854011735669695222}
-  - {fileID: 637280264858611740}
   m_Father: {fileID: 6607005994558439261}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -391,7 +390,7 @@ MonoBehaviour:
   swordTip: {fileID: 9027321683989585293}
   glowPart: {fileID: 6782503912281171496}
   swordParent: {fileID: 4143231368096279327}
-  m_MuzzleFlash: {fileID: 7349158783402326789}
+  hitSpark: {fileID: 771210026067629851, guid: ccb3e2d0192c645ffa4068e70c383028, type: 3}
   temperature: 0
   rotThres: 5
 --- !u!114 &8130638216236034202
@@ -568,85 +567,4 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8508746228691919846, guid: d165b702c99f67041af769945c52eb2e,
     type: 3}
   m_PrefabInstance: {fileID: 2897337119428511182}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &8020514661597719582
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 4143231368096279327}
-    m_Modifications:
-    - target: {fileID: 1913636058346047575, guid: ccb3e2d0192c645ffa4068e70c383028,
-        type: 3}
-      propertyPath: m_Name
-      value: Rainbow Muzzle flash
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464299192213281794, guid: ccb3e2d0192c645ffa4068e70c383028,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464299192213281794, guid: ccb3e2d0192c645ffa4068e70c383028,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464299192213281794, guid: ccb3e2d0192c645ffa4068e70c383028,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464299192213281794, guid: ccb3e2d0192c645ffa4068e70c383028,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464299192213281794, guid: ccb3e2d0192c645ffa4068e70c383028,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464299192213281794, guid: ccb3e2d0192c645ffa4068e70c383028,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464299192213281794, guid: ccb3e2d0192c645ffa4068e70c383028,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464299192213281794, guid: ccb3e2d0192c645ffa4068e70c383028,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464299192213281794, guid: ccb3e2d0192c645ffa4068e70c383028,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464299192213281794, guid: ccb3e2d0192c645ffa4068e70c383028,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464299192213281794, guid: ccb3e2d0192c645ffa4068e70c383028,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ccb3e2d0192c645ffa4068e70c383028, type: 3}
---- !u!4 &637280264858611740 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7464299192213281794, guid: ccb3e2d0192c645ffa4068e70c383028,
-    type: 3}
-  m_PrefabInstance: {fileID: 8020514661597719582}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &7349158783402326789 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 771210026067629851, guid: ccb3e2d0192c645ffa4068e70c383028,
-    type: 3}
-  m_PrefabInstance: {fileID: 8020514661597719582}
   m_PrefabAsset: {fileID: 0}
