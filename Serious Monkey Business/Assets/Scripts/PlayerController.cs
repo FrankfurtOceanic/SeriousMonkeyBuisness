@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     float health;
     float money;
 
+    [SerializeField] GameObject m_Gun;
+    [SerializeField] GameObject m_Sword;
+
     public float Health
     {
         get => health; set
@@ -52,6 +55,9 @@ public class PlayerController : MonoBehaviour
         Money = initialMoney;
         HealthChanged += PlayerController_HealthChanged;
         MoneyChanged += PlayerController_MoneyChanged;
+
+        m_Gun.SetActive(true);
+        m_Sword.SetActive(false);
     }
 
     private void OnDestroy()
@@ -74,7 +80,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (InputManager.GetDown(MonkeyKey.SwitchWeapon))
+        {
+            m_Gun.SetActive(!m_Gun.activeSelf);
+            m_Sword.SetActive(!m_Sword.activeSelf);
+        }
 
         /*
         if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger)&&OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))

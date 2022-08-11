@@ -10,7 +10,8 @@ public enum MonkeyKey
     SelectLeft,
     SelectRight,
     ToggleBuild,
-    PlaceTurret
+    PlaceTurret,
+    SwitchWeapon
 }
 
 public class InputManager : MonoBehaviour
@@ -22,6 +23,7 @@ public class InputManager : MonoBehaviour
             MonkeyKey.SelectLeft => OVRInput.RawButton.LThumbstickLeft,
             MonkeyKey.SelectRight => OVRInput.RawButton.LThumbstickRight,
             MonkeyKey.ToggleBuild => OVRInput.RawButton.Y,
+            MonkeyKey.SwitchWeapon => OVRInput.RawButton.X,
             MonkeyKey.PlaceTurret => OVRInput.RawButton.LIndexTrigger,
             _ => throw new System.NotImplementedException(),
         });
@@ -34,6 +36,7 @@ public class InputManager : MonoBehaviour
             MonkeyKey.SelectLeft => KeyCode.LeftArrow,
             MonkeyKey.SelectRight => KeyCode.RightArrow,
             MonkeyKey.ToggleBuild => KeyCode.Y,
+            MonkeyKey.SwitchWeapon => KeyCode.X,
             MonkeyKey.PlaceTurret => KeyCode.Return,
             _ => throw new System.NotImplementedException(),
         });
