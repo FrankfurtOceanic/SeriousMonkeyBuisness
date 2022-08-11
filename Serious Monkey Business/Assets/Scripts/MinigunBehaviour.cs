@@ -7,6 +7,8 @@ public class MinigunBehaviour : MonoBehaviour, Gun
     [SerializeField] ParticleSystem m_MuzzleFlash;
     [SerializeField] ParticleSystem m_Bullets;
     [SerializeField] float DPS = 40;
+    [SerializeField] AudioClip m_FireSound;
+    private AudioSource m_AudioSource;
 
     Transform m_LeftHandTransform;
     Transform m_RightHandTransform;
@@ -14,6 +16,7 @@ public class MinigunBehaviour : MonoBehaviour, Gun
     // temp hack so that player has minigun equiped at start
     private void Start()
     {
+        m_AudioSource = GetComponent<AudioSource>();
         var player=FindObjectOfType<PlayerController>();
         player.Equip(this);
     }
@@ -33,6 +36,11 @@ public class MinigunBehaviour : MonoBehaviour, Gun
 
     public void Fire()
     {
+        if (!m_AudioSource.isPlaying)
+        {
+            m_AudioSource.clip = m_FireSound;
+            m_AudioSource.Play();
+        }
         m_MuzzleFlash.Play();
         m_Bullets.Play();
         RaycastHit hit;

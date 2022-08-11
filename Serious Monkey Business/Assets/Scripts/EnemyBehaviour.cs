@@ -35,6 +35,7 @@ public class EnemyBehaviour : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         HP -= dmg;
+
         //flash.flashColor = Color.Lerp(liveColor, deadColor, 1-Mathf.Pow(HP/MaxHP, 0.9f));
         flash.FlashMe();
         if(HP < 0)
