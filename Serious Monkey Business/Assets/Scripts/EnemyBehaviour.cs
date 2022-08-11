@@ -14,28 +14,35 @@ public class EnemyBehaviour : MonoBehaviour
     public float money = 100;
     public PlayerController playerController;
 
+    public AudioClip[] passiveSounds;
+    public AudioSource source;
+    public float soundsCooldown;
+    private bool audioAvailable;
 
     int index = 0;
     Vector3 startPosition;
     float startTime;
     Flash flash;
 
+
     //public Color liveColor = new Color(0.8f,0.8f,0.8f), deadColor=new Color(1f, 1f, 1f);
 
     // Start is called before the first frame update
     void Start()
     {
+        source = GetComponent<AudioSource>();
         startPosition = transform.position;
         startTime = Time.time;
         flash = GetComponentInChildren<Flash>();
         transform.LookAt(path[index].position);
+
     }
     
 
     public void TakeDamage(float dmg)
     {
         HP -= dmg;
-
+        if (audioAvailable) playRandomSound();
         //flash.flashColor = Color.Lerp(liveColor, deadColor, 1-Mathf.Pow(HP/MaxHP, 0.9f));
         flash.FlashMe();
         if(HP < 0)
@@ -75,5 +82,18 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void playRandomSound()
+    {
+        source.PlayOneShot(passiveSounds[Random.Range(0, passiveSounds.Length-1)]);
+        StartCoroutine(StartCooldown());
+
+    }
+    public IEnumerator StartCooldown()
+    {
+        audioAvailable = false;
+        yield return new WaitForSeconds(soundsCooldown);
+        audioAvailable = true;
     }
 }
