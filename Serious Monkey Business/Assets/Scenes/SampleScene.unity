@@ -992,6 +992,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1159463577, guid: 3a00ece927d25d6468bce6f5760c98ab, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 135021416944791028, guid: 3a00ece927d25d6468bce6f5760c98ab,
+        type: 3}
+      propertyPath: resetTrackerOnLoad
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 135021416944791036, guid: 3a00ece927d25d6468bce6f5760c98ab,
+        type: 3}
+      propertyPath: HmdRotatesY
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 135021416956003376, guid: 3a00ece927d25d6468bce6f5760c98ab,
         type: 3}
       propertyPath: m_RootOrder
@@ -1075,6 +1089,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27144a1ef6fd7d54a85d656c8e77baac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &178130522 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1159463574, guid: 3a00ece927d25d6468bce6f5760c98ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 178130519}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &178130523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178130522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2051e49b4d4201418c42b0244b2bb47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &245866693
