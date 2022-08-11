@@ -42,36 +42,28 @@ public class Sword : MonoBehaviour
 
         trailRenderer.startWidth = swordRenderer.bounds.size.y * 2;
 
-        foreach (var collider in GetComponentsInChildren<Collider2Event>())
-        {
-            collider.EventCollisionStay += Collider_EventCollisionStay;
-        }
     }
 
     private void OnDestroy()
     {
-        foreach (var collider in GetComponentsInChildren<Collider2Event>())
-        {
-            collider.EventCollisionStay -= Collider_EventCollisionStay;
-        }
     }
 
-    private void Collider_EventCollisionStay(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         var obj = collision.gameObject;
         var enemy = obj.GetComponent<EnemyBehaviour>(); //TODO performance concerns?
         if (enemy != null)
         {
             enemy.TakeDamage(DPS * Time.deltaTime);
+            hitSpark.Play();
+            //for (int i = 0; i < collision.contactCount - hitSparkCache.Count; i++)
+            //    hitSparkCache.Add(Instantiate(hitSpark, swordParent));
 
-            for (int i = 0; i < collision.contactCount - hitSparkCache.Count; i++)
-                hitSparkCache.Add(Instantiate(hitSpark, swordParent));
-
-            for (int i = 0; i < collision.contactCount; i++)
-            {
-                hitSparkCache[i].transform.position = collision.GetContact(i).point;
-                hitSparkCache[i].Play();
-            }
+            //for (int i = 0; i < collision.contactCount; i++)
+            //{
+            //    hitSparkCache[i].transform.position = collision.GetContact(i).point;
+            //    hitSparkCache[i].Play();
+            //}
         }
     }
 
