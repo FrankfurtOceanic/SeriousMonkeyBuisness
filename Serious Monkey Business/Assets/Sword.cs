@@ -89,5 +89,25 @@ public class Sword : MonoBehaviour
         temperature = Mathf.Min(1, temperature + velocity * heatupRatio * Time.deltaTime);
         swordRenderer.material.SetColor("_Emission", burnGradient.Evaluate(temperature));
         lastTipPos = curTipPos;
+                
+        if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
+        {
+            waveStart = curTipPos;
+            curWave = Instantiate(Wave);
+        }
+        else if (OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger))
+        {
+            waveEnd = curTipPos;
+            curWave.SetWave(waveStart, waveEnd);
+            curWave.Forward = playerTransform.forward;
+            curWave.goForward = true;
+
+        }
     }
+
+    [SerializeField] Transform playerTransform;
+    [SerializeField]SwordWave Wave;
+    SwordWave curWave;
+    Vector3 waveStart = default;
+    Vector3 waveEnd = default;
 }

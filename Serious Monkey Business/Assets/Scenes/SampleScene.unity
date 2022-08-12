@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.26722705, g: 0.113444194, b: 0.059725173, a: 1}
+  m_IndirectSpecularColor: {r: 0.26758918, g: 0.11454163, b: 0.05912914, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1131,6 +1131,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2051e49b4d4201418c42b0244b2bb47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &178130524 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 135021416956003376, guid: 3a00ece927d25d6468bce6f5760c98ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 178130519}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &211922664 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8367319076117967192, guid: d4819b19c3718d6489201ed96c76c07b,
@@ -11537,6 +11543,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 178130520}
     m_Modifications:
+    - target: {fileID: 3918674318210690960, guid: d4819b19c3718d6489201ed96c76c07b,
+        type: 3}
+      propertyPath: Wave
+      value: 
+      objectReference: {fileID: 8072001507728717121, guid: fa1258c13203bbe46bcbcec4142271d2,
+        type: 3}
+    - target: {fileID: 3918674318210690960, guid: d4819b19c3718d6489201ed96c76c07b,
+        type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 178130524}
     - target: {fileID: 6607005994558439261, guid: d4819b19c3718d6489201ed96c76c07b,
         type: 3}
       propertyPath: m_RootOrder
