@@ -26,36 +26,42 @@ public class BananaBoomerangLauncher : MonoBehaviour
 
     Vector3 lastTipPos;
     float lastRot;
+    public float maxDistance=20;
     // Update is called once per frame
     void Update()
     {
         var curTipPos = transform.position;
         Vector3 delta = (curTipPos - lastTipPos)/Time.deltaTime;
         lastTipPos = curTipPos;
-        avgVel = Vector3.Lerp(avgVel, delta, 0.5f);
+        avgVel = Vector3.Lerp(avgVel, delta, 0.1f);
 
         var curRot = transform.localRotation.eulerAngles.y;
         var deltaRot = Mathf.DeltaAngle(lastRot, curRot)/Time.deltaTime;
         lastRot = curRot;
-        avgRot = Mathf.Lerp(avgRot, deltaRot, 0.5f);
+        avgRot = Mathf.Lerp(avgRot, deltaRot, 0.2f);
 
         if (isHolding)
         {
-            vibration.enabled = InputManager.Get(MonkeyKey.Fire);
+            if (InputManager.GetDown(MonkeyKey.Fire))
+                vibration.enabled = true;
             if (InputManager.GetUp(MonkeyKey.Fire))
             {
                 banana.transform.parent = null;
                 isHolding = false;
                 banana.Throw(avgVel, avgRot, this.transform);
+                vibration.enabled = false;
             }
         }
         else
         {
-            vibration.enabled = true;
+            Vector3 bananaDistance = transform.position - banana.transform.position;
+            var velocityPercent = bananaDistance.magnitude/maxDistance;
+            OVRInput.SetControllerVibration(velocityPercent * 10, velocityPercent * 10, OVRInput.Controller.RHand);
             if (banana.isReturning)
             {
-                if (Vector3.Angle(banana.Velocity, transform.position - banana.transform.position) >= 90)
+                if (Vector3.Angle(banana.Velocity, bananaDistance) >= 90)
                 {
+                    OVRInput.SetControllerVibration(0, 0);
                     isHolding = true;
                     banana.Catch();
                     banana.transform.parent = transform;
