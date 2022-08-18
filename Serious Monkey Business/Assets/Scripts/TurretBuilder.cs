@@ -56,6 +56,7 @@ public class TurretBuilder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        turretSelector.transform.parent = null;
         foreach (var turret in turrets)
         {
             var copy = Instantiate(turret);
@@ -71,7 +72,7 @@ public class TurretBuilder : MonoBehaviour
         {
             Destroy(instantiatedBlueprint);
         }
-        
+
         currentTurretInfo = actual.GetComponent<ITurretComponent>();
         if (currentTurretInfo.Blueprint)
             instantiatedBlueprint = Instantiate(currentTurretInfo.Blueprint);
@@ -126,27 +127,20 @@ public class TurretBuilder : MonoBehaviour
                 Building = true;
                 instantiatedBlueprint.SetActive(true);
             }
-
-            turretSelector.gameObject.SetActive(Building);
         }
+
+        bool turretSelectorShow = false;
 
         if (Building)
         {
-            if (InputManager.GetDown(MonkeyKey.SelectLeft))
-            {
-                turretSelector.ScrollLeft();
-                SetCurrentTurret(turrets[turretSelector.SelectionIndex]);
-            }
-            else if (InputManager.GetDown(MonkeyKey.SelectRight))
-            {
-                turretSelector.ScrollRight();
-                SetCurrentTurret(turrets[turretSelector.SelectionIndex]);
-            }
-
             line.SetPositions(new Vector3[] { transform.position, transform.position });
 
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, float.MaxValue, targetLayer))
             {
+                turretSelectorShow = true;
+                turretSelector.transform.position = hit.point + Vector3.up * 2f;
+                turretSelector.transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+
                 instantiatedBlueprint.transform.position = hit.point;
                 line.SetPosition(1, hit.point);
 
@@ -164,7 +158,23 @@ public class TurretBuilder : MonoBehaviour
                 }
 
             }
+
+            if (turretSelector.gameObject.activeSelf)
+            {
+                if (InputManager.GetDown(MonkeyKey.SelectLeft))
+                {
+                    turretSelector.ScrollLeft();
+                    SetCurrentTurret(turrets[turretSelector.SelectionIndex]);
+                }
+                else if (InputManager.GetDown(MonkeyKey.SelectRight))
+                {
+                    turretSelector.ScrollRight();
+                    SetCurrentTurret(turrets[turretSelector.SelectionIndex]);
+                }
+            }
         }
+
+        turretSelector.gameObject.SetActive(turretSelectorShow);
 
 
     }
