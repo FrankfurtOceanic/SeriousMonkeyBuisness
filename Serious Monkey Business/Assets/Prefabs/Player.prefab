@@ -1017,6 +1017,8 @@ MonoBehaviour:
   initialMoney: 1000
   healthBar: {fileID: 4602665897385409047}
   moneyUI: {fileID: 2308314963463664666}
+  m_Gun: {fileID: 0}
+  m_Sword: {fileID: 0}
 --- !u!1 &135021416956234420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,13 +1493,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1726305332663549619, guid: 98d288c97b3ab4442b5d23d659e4baa8,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1726305332663549619, guid: 98d288c97b3ab4442b5d23d659e4baa8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1726305332663549619, guid: 98d288c97b3ab4442b5d23d659e4baa8,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1726305332663549619, guid: 98d288c97b3ab4442b5d23d659e4baa8,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1726305332663549619, guid: 98d288c97b3ab4442b5d23d659e4baa8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.343
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1726305332663549619, guid: 98d288c97b3ab4442b5d23d659e4baa8,
         type: 3}
@@ -1538,6 +1555,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1726305332663549619, guid: 98d288c97b3ab4442b5d23d659e4baa8,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2420010534528624225, guid: 98d288c97b3ab4442b5d23d659e4baa8,
         type: 3}
