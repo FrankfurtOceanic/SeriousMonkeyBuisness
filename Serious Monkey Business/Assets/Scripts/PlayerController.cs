@@ -56,8 +56,7 @@ public class PlayerController : MonoBehaviour
         HealthChanged += PlayerController_HealthChanged;
         MoneyChanged += PlayerController_MoneyChanged;
 
-        m_Gun.SetActive(true);
-        m_Sword.SetActive(false);
+        selectedWeaponIndex = 0;
     }
 
     private void OnDestroy()
@@ -77,13 +76,24 @@ public class PlayerController : MonoBehaviour
 
     int index = 0;
 
+    int selectedWeaponIndex{
+        get => index;
+        set {
+            index = value;
+            for (int i = 0; i < weapons.Count; i++)
+                weapons[i].SetActive(i == index);
+
+        }
+    } 
+    
+    public List<GameObject> weapons;
+
     // Update is called once per frame
     void Update()
     {
         if (InputManager.GetDown(MonkeyKey.SwitchWeapon))
         {
-            m_Gun.SetActive(!m_Gun.activeSelf);
-            m_Sword.SetActive(!m_Sword.activeSelf);
+            selectedWeaponIndex = (selectedWeaponIndex + 1) % weapons.Count;
         }
 
         /*

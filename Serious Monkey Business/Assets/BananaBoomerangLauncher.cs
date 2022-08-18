@@ -39,19 +39,19 @@ public class BananaBoomerangLauncher : MonoBehaviour
         lastRot = curRot;
         avgRot = Mathf.Lerp(avgRot, deltaRot, 0.5f);
 
-        vibration.enabled = isHolding;
         if (isHolding)
         {
+            vibration.enabled = InputManager.Get(MonkeyKey.Fire);
             if (InputManager.GetUp(MonkeyKey.Fire))
             {
                 banana.transform.parent = null;
                 isHolding = false;
-                banana.Throw(avgVel, avgRot);
+                banana.Throw(avgVel, avgRot, this.transform);
             }
         }
         else
         {
-            if(banana.isReturning && Vector3.Angle(banana.Velocity, transform.position - banana.transform.position)>=90 )
+            if (banana.isReturning && Vector3.Angle(banana.Velocity, transform.position - banana.transform.position) >= 90)
             {
                 isHolding = true;
                 banana.Catch();
