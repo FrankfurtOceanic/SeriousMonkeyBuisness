@@ -25,6 +25,7 @@ public class BananaBoomerang : MonoBehaviour
 
     State state=State.Held;
     Vector3 launchPoint;
+    Quaternion initialRot;
 
     public void Throw(Vector3 velocity, float rotSpeed, Transform thrower)
     {
@@ -32,7 +33,8 @@ public class BananaBoomerang : MonoBehaviour
         state = State.GoingOut;
         _velocity = velocity.magnitude * initialVelocityMultiplier;
         direction = velocity.normalized;
-        rotationSpeed = rotSpeed * initialRotMultiplier;
+        rotationSpeed = 720;
+        initialRot = transform.rotation;
         launchPoint = velocity;
     }
 
@@ -47,11 +49,12 @@ public class BananaBoomerang : MonoBehaviour
     {
         if (state != State.Held)
         {
+            transform.rotation *= Quaternion.Euler(0,rotationSpeed*Time.deltaTime, 0);
 
             Vector3 directionToPlayer = transform.position - thrower.position;
 
-            var distance = directionToPlayer.sqrMagnitude;
-            _velocity -= gravity * Time.deltaTime / distance;
+            //var distance = directionToPlayer.sqrMagnitude;
+            _velocity -= gravity * Time.deltaTime;
 
             if (_velocity <= 0)
                 state = State.Returning;

@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialVelocityMultiplier: 10
-  initialRotMultiplier: 2
-  gravity: 1
+  initialRotMultiplier: 30
+  gravity: 9
 --- !u!1001 &217548593911992577
 PrefabInstance:
   m_ObjectHideFlags: 0

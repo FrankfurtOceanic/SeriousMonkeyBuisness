@@ -51,13 +51,17 @@ public class BananaBoomerangLauncher : MonoBehaviour
         }
         else
         {
-            if (banana.isReturning && Vector3.Angle(banana.Velocity, transform.position - banana.transform.position) >= 90)
+            vibration.enabled = true;
+            if (banana.isReturning)
             {
-                isHolding = true;
-                banana.Catch();
-                banana.transform.parent = transform;
-                banana.transform.localPosition = initialLocalPos;
-                banana.transform.localRotation = initialLocalRot;
+                if (Vector3.Angle(banana.Velocity, transform.position - banana.transform.position) >= 90)
+                {
+                    isHolding = true;
+                    banana.Catch();
+                    banana.transform.parent = transform;
+                    banana.transform.localPosition = initialLocalPos;
+                    banana.transform.localRotation = initialLocalRot;
+                }
             }
         }
     }
