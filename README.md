@@ -1,7 +1,8 @@
 # README
 [![Watch the video](https://img.youtube.com/vi/_yFQBTXLHXw/maxresdefault.jpg)](https://youtu.be/_yFQBTXLHXw)
+Watch the video: https://youtu.be/_yFQBTXLHXw  
 
-Serious Monkey Buisness is a VR tower defense game within Unity for the oculus rift. It was developed during the 2022 Unity Student Experience by Yathin, Sunny, and Joey.  
+Serious Monkey Buisness is a VR tower defense game within Unity for the oculus rift. It was developed during the 2022 Unity Student Experience by Joey, Yathin, and Sunny.
 
 ## Gameplay
 The main gameplay loop revolves around defending against a horde of neon apes. The enemies follow a path and diminish the player's health if they reach their goal.
